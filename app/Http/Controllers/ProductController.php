@@ -1,5 +1,6 @@
 <?php
-namespace App\Http\Controllers\Admin;
+
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\categories;
@@ -15,10 +16,17 @@ class ProductController extends Controller
         $products = Products::all();
         return view('index', compact('categories', 'products'));
     }
+    public function show($id)
+    {
+        $categories = Categories::all();
+        $category = Categories::findOrFail($id);
+        $products = Products::where('category_id', $category->id)->get();
+        return view('index', compact('categories', 'category', 'products'));
+    }
 
     public function create()
     {
-        $categories = categories::all(); // Pastikan model kategori benar
+        $categories = categories::all();
         return view('admin.products.form', ['categories' => $categories]);
     }
 

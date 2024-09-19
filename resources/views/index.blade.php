@@ -18,25 +18,29 @@
         </div>
     </section>
 
-
+    <!-- Kategori Nav Pills -->
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         @foreach ($categories as $category)
             <li class="nav-item" role="presentation">
-                <a class="nav-link {{ $loop->first ? 'active' : '' }}" href="{{ url('category/' . $category->id) }}"
-                    role="tab">
+                <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="category-{{ $category->id }}"
+                    href="{{ route('category.show', $category->id) }}" role="tab">
                     {{ $category->name }}
                 </a>
             </li>
         @endforeach
     </ul>
 
-
+    <!-- Tab content -->
     <div class="tab-content" id="pills-tabContent">
-        @foreach ($categories as $category)
+        @foreach ($products as $category)
             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="pills-{{ $category->slug }}"
                 role="tabpanel" aria-labelledby="pills-{{ $category->slug }}-tab" tabindex="0">
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-                    @foreach ($products->where('category_id', $category->id) as $product)
+                    @php
+                        $categoryProducts = $products->where('category_id', $category->id);
+                    @endphp
+
+                    @forelse ($categoryProducts as $product)
                         <div class="col" data-aos="zoom-in">
                             <div class="card">
                                 <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="...">
@@ -51,15 +55,13 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <p>Tidak ada produk di kategori ini.</p>
+                    @endforelse
                 </div>
             </div>
         @endforeach
     </div>
-    </div>
-
-
-
 
     <section id="about" class="mt-5 mb-5">
         <h2 class="text-center">Tentang Kami</h2>
@@ -98,18 +100,27 @@
         </div>
     </footer>
 
-
-
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <!-- jQuery untuk interaksi tombol kategori -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Ketika tombol kategori diklik
+            $('.nav-link').on('click', function(e) {
+                // Menghapus class 'active' dari semua tombol
+                $('.nav-link').removeClass('active');
+                // Menambahkan class 'active' ke tombol yang diklik
+                $(this).addClass('active');
+            });
+        });
     </script>
 
 </body>

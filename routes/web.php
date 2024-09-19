@@ -11,5 +11,4 @@ Route::get('/', function () {
 // Route untuk detail produk
 Route::get('product/show', [ProductController::class, 'show'])->name('product.show');
 Route::get('/', [ProductController::class, 'index']);
-Route::get('/', [CategoriesController::class, 'index']);
-// route::get('category/{id}', [CategoriesController::class, 'show'])->name('category.show');
+Route::get('/category/{id}', [ProductController::class, 'show'])->name('category.show');

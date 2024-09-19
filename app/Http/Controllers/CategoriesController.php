@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Categories; // Pastikan nama modelnya benar
+use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
     public function index()
-    {
-        $categories = Categories::all();
-        $products = Products::all();
-        return view('index', compact('categories', 'products'));
-    }
+{
+    $categories = Categories::all();
+    $products = Products::all();
+    return view('index', compact('categories', 'products'));
+}
 
 
     public function create()
@@ -37,14 +37,12 @@ class CategoriesController extends Controller
 
     public function show(categories $id)
     {
-        $categories = Categories::findOrFail($id); // Jika tidak ditemukan, akan melemparkan error 404
-        $products = Products::where('category_id', $categories->id)->get();
-        return view('index', compact('categories', 'products'));
+       
     }
 
     public function edit(Categories $categories)
     {
-        return view('admin.categories.form', ['categories$categories' => $categories]);
+
     }
 
     public function update(Request $request, Categories $categories)
