@@ -9,6 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <form class="d-flex ms-auto me-3" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Cari</button>
@@ -17,9 +18,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#home">Home</a>
                 </li>
+                <form action="{{ route('auth.logout')}}" method="POST">
                 <li class="nav-item">
-                    <a class="nav-link" href="#Product">Product</a>
+                    @csrf
+                    <button type="submit" class="nav-link">Logout</button>
                 </li>
+                </form>
                 <li class="nav-item">
                     <a class="nav-link" href="#about">About Us</a>
                 </li>
@@ -38,4 +42,8 @@
         </div>
     </div>
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if ($message = Session::get('succes'))
+<Script>Swal.fire("{{ $message }}");</Script>
+@endif
 

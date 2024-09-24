@@ -10,24 +10,32 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Categories::all();
-        $products = Products::all();
-        return view('index', compact('categories', 'products'));
+        $selectedCategoryId = $request->input('category_id', $categories->first()->id);
+        $products = Products::where('category_id', $selectedCategoryId)->get();
+        return view('index', compact('categories', 'products', 'selectedCategoryId'));
     }
-    public function show($id)
+
+    public function show($id, Request $request)
     {
         $categories = Categories::all();
         $category = Categories::findOrFail($id);
-        $products = Products::where('category_id', $category->id)->get();
-        return view('index', compact('categories', 'category', 'products'));
+        $selectedCategoryId = $id;
+        $products = Products::where('category_id', $selectedCategoryId)->get();
+        return view('index', compact('categories', 'selectedCategoryId', 'category', 'products'));
+    }
+
+    public function showProduct()
+    {
+        return view('product.show');
     }
 
     public function create()
     {
         $categories = categories::all();
-        return view('admin.products.form', ['categories' => $categories]);
+        return view('products.form', ['categories' => $categories]);
     }
 
     public function store(Request $request)

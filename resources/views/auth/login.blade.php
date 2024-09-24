@@ -73,14 +73,27 @@
                     <h4 class="mb-0">Admin</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('$message') }}
+                    </div>
+                @endif
+                    <form action="{{ route ("login-proses") }}" method="POST">
+                        @csrf
                         <div class="mb-4">
-                            <label for="email" class="form-label">Username</label>
-                            <input type="email" class="form-control" id="email" placeholder="Masukkan Username Anda" required>
+                            <label for="USN" class="form-label">Username</label>
+                            <input type="USN" name="USN" class="form-control" id="USN" placeholder="Masukkan Username Anda" >
+                            @error('USN')
+                            <small>username anda tidak boleh kosong</small>
+                            @enderror
                         </div>
+
                         <div class="mb-4">
                             <label for="password" class="form-label">Kata Sandi</label>
-                            <input type="password" class="form-control" id="password" placeholder="Masukkan kata sandi Anda" required>
+                            <input type="password" name="password"  class="form-control" id="password" placeholder="Masukkan kata sandi Anda" >
+                            @error('password')
+                            <small>password anda tidak boleh kosong</small>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-warning w-100">Login</button>
                     </form>
@@ -91,5 +104,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if ($message = Session::get('failed'))
+<Script>Swal.fire("{{ $message }}");</Script>
+@endif
 </body>
 </html>

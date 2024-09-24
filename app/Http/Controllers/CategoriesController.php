@@ -37,7 +37,9 @@ class CategoriesController extends Controller
 
     public function show(categories $id)
     {
-       
+        $categories = Categories::findOrFail($id); // Jika tidak ditemukan, akan melemparkan error 404
+        $products = Products::where('category_id', $categories->id)->get();
+        return view('index', compact('categories', 'products'));
     }
 
     public function edit(Categories $categories)

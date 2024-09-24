@@ -22,8 +22,8 @@
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         @foreach ($categories as $category)
             <li class="nav-item" role="presentation">
-                <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="category-{{ $category->id }}"
-                    href="{{ route('category.show', $category->id) }}" role="tab">
+                <a class="nav-link {{ $category->id == $selectedCategoryId ? 'active' : '' }}"
+                    id="category-{{ $category->id }}" href="{{ route('category.show', $category->id) }}" role="tab">
                     {{ $category->name }}
                 </a>
             </li>
@@ -108,21 +108,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-
-    <!-- jQuery untuk interaksi tombol kategori -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Ketika tombol kategori diklik
-            $('.nav-link').on('click', function(e) {
-                // Menghapus class 'active' dari semua tombol
-                $('.nav-link').removeClass('active');
-                // Menambahkan class 'active' ke tombol yang diklik
-                $(this).addClass('active');
-            });
-        });
-    </script>
-
 </body>
 
 </html>
