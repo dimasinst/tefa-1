@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['nickname' => $request->USN, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([

@@ -19,6 +19,6 @@ Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('lo
 Route::post('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 Route::get('product/show/{id}', [ProductController::class, 'showProduct'])->name('product.show');
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category.show');
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
 });

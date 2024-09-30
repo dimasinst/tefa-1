@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
 {
-    public function handle(Request $request, Closure $next)
-    {
-        if (Auth::check()) {
-            return redirect('/dashboard/admin');
-        }
-        return $next($request);
-    }
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     if (Auth::check()) {
+    //         return redirect('/dashboard/admin');
+    //     }
+    //     return $next($request);
+    // }
 }

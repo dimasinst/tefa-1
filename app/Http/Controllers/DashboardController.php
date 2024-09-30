@@ -15,6 +15,6 @@ class DashboardController extends Controller
         if (Auth::check()) {
             return view('admin.dashboard');
         }
-        return redirect()->route('auth.login')->withErrors('Anda harus login untuk mengakses halaman ini.');
+        return redirect()->route('auth.login');
     }
 }
