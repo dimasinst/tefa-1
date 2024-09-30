@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = categories::all();
-        return view('products.form', ['categories' => $categories]);
+        return view('dashboard', ['categories' => $categories]);
     }
 
     public function store(Request $request)
