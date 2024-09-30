@@ -27,7 +27,7 @@ Route::get('product/show/{id}', [ProductController::class, 'showProduct'])->name
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category.show');
 
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('admin/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'admin'])->name('dashboard');
 });
 // Route yang hanya bisa diakses oleh admin
 // Route::middleware(['auth:admin'])->group(function () {
