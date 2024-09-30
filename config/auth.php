@@ -42,11 +42,11 @@ return [
         ],
 
 
-    'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins', // Menentukan provider untuk admin
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
     ],
-],
 
 
     /*

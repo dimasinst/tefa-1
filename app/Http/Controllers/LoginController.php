@@ -5,34 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class LoginController extends Controller
 {
-    public function index(){
+    public function login()
+    {
         return view('auth.login');
     }
-    public function login_proses(request $request)
+
+    public function authenticate(Request $request)
     {
-        $request->validate([
-            'USN' => 'required',
-            'password' => 'required'
-        ]);
-        $data = [
-            'nickname' => $request->USN,
-            'password' => $request->password
-        ];
-        if (Auth::guard('admin')->attempt($data)) {
+        if (Auth::attempt(['nickname' => $request->USN, 'password' => $request->password])) {
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
-        } else {
-            return redirect()->route('login')->with('failed', 'Username atau Password salah');
         }
+
+        return back()->withErrors([
+            'username' => 'Kredensial tidak valid',
+        ])->onlyInput('username');
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login')
-            ->with('failed','Anda telah keluar dari sistem');
+        return redirect()->route('login');
     }
 }

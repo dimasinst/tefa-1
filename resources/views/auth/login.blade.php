@@ -78,7 +78,7 @@
                         {{ session('$message') }}
                     </div>
                 @endif
-                    <form action="{{ route ("login-proses") }}" method="POST">
+                    <form action="{{ route ("auth.authenticate") }}" method="POST">
                         @csrf
                         <div class="mb-4">
                             <label for="USN" class="form-label">Username</label>
