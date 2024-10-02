@@ -20,8 +20,8 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'Kredensial tidak valid',
-        ])->onlyInput('username');
+            'USN' => 'Kredensial tidak valid',
+        ])->onlyInput('USN');
     }
 
     public function logout(Request $request)
