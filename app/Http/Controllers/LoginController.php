@@ -16,19 +16,18 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['nickname' => $request->USN, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
-        return back()->withErrors([
-            'USN' => 'Kredensial tidak valid',
-        ])->onlyInput('USN');
-    }
+     else {
+        return redirect()->route('auth.login')->with('failed', 'Username atau Password salah');
+    }}
 
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('auth.login');
     }
 }

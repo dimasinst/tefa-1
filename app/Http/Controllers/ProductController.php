@@ -18,10 +18,16 @@ class ProductController extends Controller
         return view('index', compact('categories', 'products', 'selectedCategoryId'));
     }
 
+    public function about()
+{
+    return view('about'); // Pastikan Anda memiliki view bernama 'about.blade.php'
+}
+
+
     public function show($id, Request $request)
     {
         $categories = Categories::all();
-        $category = Categories::findOrFail($id);
+        $category = Categories::findOrFail($id);    
         $selectedCategoryId = $id;
         $products = Products::where('category_id', $selectedCategoryId)->get();
         return view('index', compact('categories', 'selectedCategoryId', 'category', 'products'));
