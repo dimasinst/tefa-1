@@ -6,24 +6,25 @@
 
 
     <h1>Daftar Produk</h1>
-    <div class="row">
+    <div class="row ">
         @foreach($products as $product)
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->name }}" style="height: 100px;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
-                    <p class="card-text">{{ $product->description }}</p>
-                    <a href="{{ route('detail', $product->id) }}" class="btn btn-primary">
-                        <i class="fa-solid fa-circle-info pt-1"></i>Selengkapnya</a>
-                </div>
+          <div class="col-md-3">
+            <div class="card product-card">
+                <img src="https://via.placeholder.com/600x300" alt="{{ $product->name }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ $product->name }}</h5>
+                <p class="card-text">{{ $product->description }}</p>
+                <a href="{{ route('detail', $product->id) }}" class="btn btn-primary">
+                  <i class="fas fa-info-circle pt-1"></i> Lihat Detail
+                </a>
+              </div>
             </div>
-        </div>
+          </div>
         @endforeach
-    </div>  
+      </div>
 
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+    {{-- <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
         @foreach($products as $product)
         <div class="col velg-kecil" data-aos="zoom-in">
           <div class="card">
@@ -40,10 +41,13 @@
           </div>
         </div>
         @endforeach
-    </div>
+    </div> --}}
 
 
 
 
-    @include('components.footer')
+
 </body>
+<footer>
+    @include('components.footer')
+</footer>

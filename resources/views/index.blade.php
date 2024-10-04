@@ -39,7 +39,6 @@
                     @php
                         $categoryProducts = $products->where('category_id', $category->id);
                     @endphp
-
                     @forelse ($categoryProducts as $product)
                         <div class="col" data-aos="zoom-in">
                             <div class="card">
