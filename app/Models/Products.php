@@ -11,11 +11,10 @@ class Products extends Model
 
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $fillable = ["name", "description", "image", "spek"];
+    protected $fillable = ["name", "description", "image","Model","Wire","Outside","Free_height",'Solid_height','Spring_rate'];
     public function category()
 {
     return $this->belongsTo(categories::class);
 }
-
 }
 

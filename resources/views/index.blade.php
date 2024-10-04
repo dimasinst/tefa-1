@@ -40,7 +40,7 @@
                         $categoryProducts = $products->where('category_id', $category->id);
                     @endphp
                     @forelse ($categoryProducts as $product)
-                        <div class="col" data-aos="zoom-in">
+                        <div class="col-md-3" data-aos="zoom-in">
                             <div class="card">
                                 <img src="https://via.placeholder.com/600x300" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -71,13 +71,7 @@
 
 
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+
 </body>
 
 </html>

@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\categories;
+use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,14 +18,15 @@ class ProductController extends Controller
     }
 
     public function about()
-{
-    return view('about');
-}
-public function produk()
-{
-    $products = Products::all();
-    return view('produk', compact('products'));
-}
+    {
+        return view('about');
+    }
+
+    public function produk()
+    {
+        $products = Products::all();
+        return view('produk', compact('products'));
+    }
 
 
     public function show($id, Request $request)
@@ -38,14 +38,15 @@ public function produk()
         return view('index', compact('categories', 'selectedCategoryId', 'category', 'products'));
     }
 
-    public function showProduct()
+    public function showProduct($id)
     {
-        return view('product.show');
+        $products = Products::find($id);
+        return view('product.show', compact('products'));
     }
 
     public function create()
     {
-        $categories = categories::all();
+        $categories = Categories::all();
         return view('dashboard', ['categories' => $categories]);
     }
 
@@ -55,8 +56,13 @@ public function produk()
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'spek' => 'required|string',
-            'category_id' => 'required|integer|exists:categories,id' // Perbarui validasi
+            'Model' => 'required|string',
+            'Wire' => 'required|string',
+            'Outside' => 'required|string',
+            'Free_height' => 'required|string',
+            'Solid_height' => 'required|string',
+            'Spring_rate' => 'required|string',
+            'category_id' => 'required|integer|exists:categories,id'
         ]);
 
         $imagePath = $request->file('image')->store('images', 'public');
@@ -65,8 +71,13 @@ public function produk()
             'name' => $request->name,
             'description' => $request->description,
             'image' => $imagePath,
-            'spek' => $request->spek,
-            'categories_id' => $request->category_id, // Perbarui nama kolom
+            'Model' => $request->Model,
+            'Wire' => $request->Wire,
+            'Outside' => $request->Outside,
+            'Free_height' => $request->Free_height,
+            'Solid_height' => $request->Solid_height,
+            'Spring_rate' => $request->Spring_rate,
+            'category_id' => $request->category_id,
         ]);
 
         return redirect()->route('products.index')->with('success', 'Product added successfully');
@@ -74,7 +85,7 @@ public function produk()
 
     public function edit(Products $product)
     {
-        $categories = categories::all(); // Pastikan model kategori benar
+        $categories = Categories::all();
         return view('admin.products.form', ['product' => $product, 'categories' => $categories]);
     }
 
@@ -84,12 +95,16 @@ public function produk()
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'spek' => 'required|string',
-            'category_id' => 'required|integer|exists:categories,id' // Perbarui validasi
+            'Model' => 'required|string',
+            'Wire' => 'required|string',
+            'Outside' => 'required|string',
+            'Free_height' => 'required|string',
+            'Solid_height' => 'required|string',
+            'Spring_rate' => 'required|string',
+            'category_id' => 'required|integer|exists:categories,id'
         ]);
 
         if ($request->hasFile('image')) {
-            // Hapus gambar lama
             if ($product->image) {
                 Storage::delete('public/' . $product->image);
             }
@@ -102,8 +117,13 @@ public function produk()
             'name' => $request->name,
             'description' => $request->description,
             'image' => $imagePath,
-            'spek' => $request->spek,
-            'category_id' => $request->category_id, // Perbarui nama kolom
+            'Model' => $request->Model,
+            'Wire' => $request->Wire,
+            'Outside' => $request->Outside,
+            'Free_height' => $request->Free_height,
+            'Solid_height' => $request->Solid_height,
+            'Spring_rate' => $request->Spring_rate,
+            'category_id' => $request->category_id,
         ]);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
@@ -111,7 +131,6 @@ public function produk()
 
     public function destroy(Products $product)
     {
-        // Hapus gambar
         if ($product->image) {
             Storage::delete('public/' . $product->image);
         }

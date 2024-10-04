@@ -16,6 +16,11 @@ return new class extends Migration
             $table->text('description');
             $table->string('image')   ;
             $table->string('pnp');
+            $table->string('Wire');
+            $table->string('Outside');
+            $table->string('Free_height');
+            $table->string('Solid_height');
+            $table->string('Spring_rate');
             $table->unsignedBigInteger('category_id'); // Tambahkan kolom category_id
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
