@@ -35,3 +35,4 @@ Route::get('/category/{id}', [ProductController::class, 'show'])->name('category
 Route::get('/about', [ProductController::class, 'about'])->name('about');
 Route::get('/produk', [ProductController::class, 'produk'])->name('produk');
 
+

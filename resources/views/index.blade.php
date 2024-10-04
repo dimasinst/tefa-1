@@ -9,7 +9,7 @@
 
     @include('components.navbar')
 
-    <section class="jumbotron text-center " id="home">
+    <section class="jumbotron text-center" id="home">
         <div class="container">
             <h2 class="text-center">MTN SPRING</h2>
             <div class="my-4">
@@ -39,7 +39,6 @@
                     @php
                         $categoryProducts = $products->where('category_id', $category->id);
                     @endphp
-
                     @forelse ($categoryProducts as $product)
                         <div class="col" data-aos="zoom-in">
                             <div class="card">
@@ -70,14 +69,46 @@
 
     @include('components.footer')
 
-
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('search-input');
+            const products = document.querySelectorAll('.card');
+            const noResultsMessage = document.createElement('p');
+
+            searchInput.addEventListener('keyup', function () {
+                console.log('Key pressed!'); // Debug
+                const searchTerm = searchInput.value.toLowerCase();
+                let found = false;
+
+                noResultsMessage.remove();
+
+                products.forEach(product => {
+                    const title = product.querySelector('.card-title').textContent.toLowerCase();
+                    const description = product.querySelector('.card-text').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        product.parentElement.style.display = ''; // Menampilkan produk
+                        found = true;
+                    } else {
+                        product.parentElement.style.display = 'none'; // Menyembunyikan produk
+                    }
+                });
+
+                if (!found) {
+                    noResultsMessage.textContent = 'Tidak ada produk ditemukan.';
+                    noResultsMessage.classList.add('text-center', 'mt-3');
+                    document.querySelector('.tab-content').appendChild(noResultsMessage);
+                }
+            });
+        });
     </script>
 </body>
 

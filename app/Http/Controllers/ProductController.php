@@ -13,8 +13,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categories = Categories::all();
-        $selectedCategoryId = $request->input('category_id', $categories->first()->id);
-        $products = Products::where('category_id', $selectedCategoryId)->get();
+        $selectedCategoryId = $request->input('category_id', default: $categories->first()->id);
+        $products = Products::where('category_id', operator: $selectedCategoryId)->get();
         return view('index', compact('categories', 'products', 'selectedCategoryId'));
     }
 
@@ -72,10 +72,10 @@ public function produk()
         return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
 
-    public function edit(Products $product)
+    public function edit(Products $products)
     {
         $categories = categories::all(); // Pastikan model kategori benar
-        return view('admin.products.form', ['product' => $product, 'categories' => $categories]);
+        return view('admin.products.form', ['product' => $products, 'categories' => $categories]);
     }
 
     public function update(Request $request, Products $product)
@@ -118,4 +118,8 @@ public function produk()
         $product->delete();
         return redirect()->route('index')->with('success', 'Product deleted successfully');
     }
+
+    
+
+
 }
