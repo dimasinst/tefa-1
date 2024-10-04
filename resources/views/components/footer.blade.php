@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <div class="bg-dark text-center p-3">
         © 2024 Hak Cipta:
         <a class="text-white" href="https://www.instagram.com/_zyomont/">developer</a>

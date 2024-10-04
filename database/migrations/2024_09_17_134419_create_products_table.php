@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->text('image')   ;
+            $table->string('image')   ;
             $table->string('pnp');
             $table->unsignedBigInteger('category_id'); // Tambahkan kolom category_id
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');

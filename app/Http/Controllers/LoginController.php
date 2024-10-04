@@ -11,16 +11,14 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
-
     public function authenticate(Request $request)
     {
         if (Auth::attempt(['nickname' => $request->USN, 'password' => $request->password])) {
             $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
-
      else {
-        return redirect()->route('auth.login')->with('failed', 'Username atau Password salah');
+        return redirect()->route('login')->with('failed', 'Username atau Password salah');
     }}
 
     public function logout(Request $request)
@@ -28,6 +26,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 }

@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #333; 
-    line-height: 1.6; 
+    color: #333;
+    line-height: 1.6;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -20,11 +20,11 @@ body {
     justify-content: end; /* Untuk memastikan link berada di tengah */
     width: 100%;
   }
-  
+
   .nav-item {
     margin: 0 5px; /* Memberikan jarak antar item navbar */
   }
-  
+
 
 .nav-link {
     position: relative;
@@ -49,8 +49,8 @@ body {
 
 .navbar .nav-link:hover{
     color: #fff; /* Warna teks saat hover */
-    border-radius: 15px; 
-    transform: scale(1.05); 
+    border-radius: 15px;
+    transform: scale(1.05);
 }
 
 .navbar .form-control {
@@ -80,25 +80,25 @@ body {
 
 .jumbotron{
     margin-top: 80px;
-    
+
 }
 
 
 
 
 h1, h2, h3 {
-    font-weight: 600; 
-    color: #343a40; 
-    margin-bottom: 20px; 
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 20px;
 }
 h4, h5, h6 {
-    font-weight: 500; 
-    color: #555; 
+    font-weight: 500;
+    color: #555;
 }
 p {
     font-size: 1rem;
-    color: #6c757d; 
-    margin-bottom: 20px; 
+    color: #6c757d;
+    margin-bottom: 20px;
 }
 
 
@@ -111,11 +111,11 @@ p {
 .card {
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-20px); 
+    transform: translateY(-20px);
 }
 
 .card-body {
@@ -127,15 +127,15 @@ p {
 .btn-primary {
     border-radius: 50px;
     width: 175px;
-    transition: background-color 0.3s ease, transform 0.3s ease; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-weight: 500;
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
     background-color: black;
-    transform: scale(1.20); 
+    transform: scale(1.20);
 }
 
 /* Gaya footer */
@@ -266,27 +266,4 @@ footer .social-icons .whatsapp-icon:hover {
         margin: 10px;
     }
 }
-/* Gaya untuk setiap kelompok kartu */
-.velg-kecil .card-img-top {
-    border-radius: 20px;
-}
 
-.velg-sedang .card-img-top {
-    border-radius: 30px;
-}
-
-.velg-besar .card-img-top {
-    border-radius: 40px;
-}
-
-.velg-kecil .card {
-    border: 2px solid #e0e0e0;
-}
-
-.velg-sedang .card {
-    border: 2px solid #c0c0c0;
-}
-
-.velg-besar .card {
-    border: 2px solid #a0a0a0;
-}

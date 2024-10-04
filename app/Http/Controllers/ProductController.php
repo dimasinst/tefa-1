@@ -20,14 +20,19 @@ class ProductController extends Controller
 
     public function about()
 {
-    return view('about'); // Pastikan Anda memiliki view bernama 'about.blade.php'
+    return view('about');
+}
+public function produk()
+{
+    $products = Products::all();
+    return view('produk', compact('products'));
 }
 
 
     public function show($id, Request $request)
     {
         $categories = Categories::all();
-        $category = Categories::findOrFail($id);    
+        $category = Categories::findOrFail($id);
         $selectedCategoryId = $id;
         $products = Products::where('category_id', $selectedCategoryId)->get();
         return view('index', compact('categories', 'selectedCategoryId', 'category', 'products'));

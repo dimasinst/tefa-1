@@ -21,6 +21,6 @@ class DashboardController extends Controller
         if (Auth::check()) {
             return view('admin.dashboard');
         }
-        return redirect()->route('auth.authenticate');
+        return redirect()->route('auth.login');
     }
 }

@@ -16,15 +16,17 @@
             </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
                 </li>
+                <form action="{{ route('logout')}}" method="POST">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk') }}">Produk</a>
+                    @csrf
+                    <button type="submit" class="nav-link" >Logout</button>
                 </li>
+                </form>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">About Us</a>
                 </li>
-
             </ul>
             <div class="dropdown">
                 <button class="btn btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
