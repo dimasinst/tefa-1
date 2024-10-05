@@ -18,9 +18,8 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        if (Auth::check()) {
-            return view('admin.dashboard');
-        }
-        return redirect()->route('auth.login');
+        // Mengambil semua produk dari database
+        $products = ProductS::with('category')->get(); // Mengambil produk beserta kategorinya
+        return view('admin.dashboard', compact('products')); // Mengirim produk ke view
     }
 }

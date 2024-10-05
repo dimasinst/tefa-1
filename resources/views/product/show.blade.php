@@ -1,80 +1,35 @@
-<head>
+@extends('layouts.app')
+
+@section('content')
+<head> 
     @include('components.head')
-    <style>
-        .card {
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-        .table th, .table td {
-            vertical-align: middle;
-        }
-        .img-container {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .content {
-            min-height: 80vh;
-            padding-bottom: 20px;
-        }
-        footer {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        .navbar {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     @include('components.navbar')
 
-    <div class="container mt-5 content">
-        <div class="card p-4">
-            <div class="row align-items-center">
-                <div class="col-md-4 mb-4 mb-md-0 img-container">
-                    <!-- Pastikan untuk menggunakan path gambar yang benar -->
-                    <img src="{{ asset('storage/' . $products->image) }}" alt="Deskripsi Gambar" class="img-fluid">
-                </div>
-
-                <div class="col-md-8">
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                            <tr>
-                                <td><strong>Model:</strong></td>
-                                <td>{{ $products->name }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>WIRE :</strong></td>
-                                <td>{{ $products->Wire }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>OUTSIDE:</strong></td>
-                                <td>{{ $products->Outside }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>FREE HEIGHT:</strong></td>
-                                <td>{{ $products->Free_height }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>SOLID HEIGHT:</strong></td>
-                                <td>{{ $products->Solid_height }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>SPRING RATE:</strong></td>
-                                <td>{{ $products->Spring_rate }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="container mt-5">
+        <h2>{{ $product->name }}</h2>
+        <div class="mb-4">
+            @if($product->image)
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid">
+            @endif
         </div>
+        <p>{{ $product->description }}</p>
+
+        <!-- Detail tambahan -->
+        <ul>
+            <li><strong>Model:</strong> {{ $product->model }}</li>
+            <li><strong>Wire:</strong> {{ $product->wire }}</li>
+            <li><strong>Outside:</strong> {{ $product->outside }}</li>
+            <li><strong>Free Height:</strong> {{ $product->free_height }}</li>
+            <li><strong>Solid Height:</strong> {{ $product->solid_height }}</li>
+            <li><strong>Spring Rate:</strong> {{ $product->spring_rate }}</li>
+            <li><strong>Kategori:</strong> {{ $product->category->name }}</li>
+        </ul>
+        
+        <a href="{{ route('home') }}" class="btn btn-primary">Kembali</a>
     </div>
 
-    <footer class="bg-light py-3">
-        @include('components.footer')
-    </footer>
+    @include('components.footer')
 </body>
+@endsection

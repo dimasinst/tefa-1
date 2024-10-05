@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    // Menampilkan daftar kategori
     public function index()
-{
-    $categories = Categories::all();
-    $products = Products::all();
-    return view('index', compact('categories', 'products'));
-}
-
-
-    public function create()
     {
-
+        $categories = Categories::all();
+        $products = Products::all();
+        return view('index', compact('categories', 'products'));
     }
 
+    // Menyimpan kategori baru
     public function store(Request $request)
     {
         $request->validate([
@@ -35,34 +30,33 @@ class CategoriesController extends Controller
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
-    public function show(categories $id)
+    // Menampilkan produk berdasarkan kategori
+    public function show($id)
     {
-        $categories = Categories::findOrFail($id); // Jika tidak ditemukan, akan melemparkan error 404
-        $products = Products::where('category_id', $categories->id)->get();
-        return view('index', compact('categories', 'products'));
+        $category = Categories::findOrFail($id);
+        $products = Products::where('category_id', $category->id)->get();
+        $categories = Categories::all();
+        return view('index', compact('category', 'products', 'categories'));
     }
 
-    public function edit(Categories $categories)
-    {
-
-    }
-
-    public function update(Request $request, Categories $categories)
+    // Memperbarui kategori
+    public function update(Request $request, Categories $category)
     {
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        $categories->update([
+        $category->update([
             'name' => $request->name,
         ]);
 
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui');
     }
 
-    public function destroy(Categories $categories)
+    // Menghapus kategori
+    public function destroy(Categories $category)
     {
-        $categories->delete();
+        $category->delete();
         return redirect()->route('categories.index')->with('success', 'Kategori berhasil dihapus');
     }
 }
