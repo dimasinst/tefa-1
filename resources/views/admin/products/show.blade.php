@@ -1,78 +1,100 @@
-@extends('layouts.app')
 
-@section('content')
-<head> 
+<head>
     @include('components.head')
     <style>
-        .product-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-top: 40px;
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
-        .product-image {
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .table th, .table td {
+            vertical-align: middle;
         }
-        .product-details {
-            list-style-type: none;
-            padding: 0;
+        .img-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        .product-details li {
-            margin-bottom: 10px;
+        .img-container img {
+            width: 100%;
+            height: auto; /* Menjaga rasio gambar */
+            max-height: 400px; /* Batas tinggi gambar */
+            object-fit: cover; /* Agar gambar tetap proporsional dalam kontainernya */
         }
-        .product-details strong {
-            color: #333;
+        .content {
+            min-height: 80vh;
+            padding-bottom: 20px;
         }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease;
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
-        .btn-primary:hover {
-            background-color: #0056b3;
+        .navbar {
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     @include('components.navbar')
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="product-container">
-                    <h2 class="text-center">{{ $product->name }}</h2>
-                    <div class="text-center mb-4">
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid product-image">
-                        @else
-                            <img src="https://via.placeholder.com/400x400" alt="No image available" class="img-fluid product-image">
-                        @endif
-                    </div>
-                    <p>{{ $product->description }}</p>
+    <div class="container mt-5 content">
+        <div class="card p-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 mb-4 mb-md-0 img-container">
+                    <!-- Pastikan untuk menggunakan path gambar yang benar -->
+                    <img src="{{ asset('storage/' . $products->image) }}" alt="{{ $products->name }}">
+                </div>
 
-                    <!-- Detail tambahan -->
-                    <ul class="product-details">
-                        <li><strong>Model:</strong> {{ $product->model }}</li>
-                        <li><strong>Wire:</strong> {{ $product->wire }}</li>
-                        <li><strong>Outside:</strong> {{ $product->outside }}</li>
-                        <li><strong>Free Height:</strong> {{ $product->free_height }}</li>
-                        <li><strong>Solid Height:</strong> {{ $product->solid_height }}</li>
-                        <li><strong>Spring Rate:</strong> {{ $product->spring_rate }}</li>
-                        <li><strong>Kategori:</strong> {{ $product->category->name }}</li>
-                    </ul>
-
-                    <div class="text-center mt-4">
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
-                    </div>
+                <div class="col-md-8">
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td><strong>Model:</strong></td>
+                                <td>{{ $products->name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>WIRE :</strong></td>
+                                <td>{{ $products->Wire }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OUTSIDE:</strong></td>
+                                <td>{{ $products->Outside }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FREE HEIGHT:</strong></td>
+                                <td>{{ $products->Free_height }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SOLID HEIGHT:</strong></td>
+                                <td>{{ $products->Solid_height }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SPRING RATE:</strong></td>
+                                <td>{{ $products->Spring_rate }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>deskripsi</strong></td>
+                                <td>{{$products->description}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="text-center mt-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
+    </div>
+    <footer class="bg-light py-3">
+        @include('components.footer')
+    </footer>
 </body>
-@endsection
+
+
+
+
+

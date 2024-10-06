@@ -12,10 +12,9 @@ class ProductController extends Controller
     // Menampilkan daftar produk (public)
     public function index(Request $request)
     {
-        $products = Products::with('category')->get();
-        $categories = Categories::all(); // Mengambil semua kategori
 
-        return view('index', compact('products', 'categories'));
+
+        return view('index');
     }
 
     public function about()
@@ -24,12 +23,44 @@ class ProductController extends Controller
 }
 
 
-    // Menampilkan detail produk (public)
-    public function showProduct($id)
-    {
-        $product = Products::with('category')->findOrFail($id);
-        return view('products.show', compact('product'));
-    }
+public function cvt()
+{
+    $products = products::where('category_id', 1)->get(); // '1' untuk kategori CVT
+    return view('categories.cvt', compact('products'));
+}
+
+public function valve()
+{
+    $products = Products::where('category_id', 2)->get(); // '2' untuk kategori Valve
+    return view('categories.valve', compact('products'));
+}
+
+public function clutch()
+{
+    $products = Products::where('category_id', 3)->get(); // '3' untuk kategori Clutch
+    return view('categories.clutch', compact('products'));
+}
+
+public function sentri()
+{
+    $products = Products::where('category_id', 4)->get(); // '4' untuk kategori Sentri
+    return view('categories.sentri', compact('products'));
+
+}
+public function showProduct($id)
+{
+    $products = Products::find($id);
+    // Ambil produk berdasarkan ID yang dipilih
+    $productDetail = Products::findOrFail($id);
+
+    // Ambil produk lain di kategori yang sama, kecuali produk yang sedang ditampilkan
+    $relatedProducts = Products::where('category_id', $productDetail->category_id)
+                               ->where('id', '!=', $id)
+                               ->get();
+
+    // Kirim data ke view
+    return view('product.show', compact('productDetail', 'relatedProducts', 'products'));
+}
 
     // Menampilkan form tambah produk (admin)
     public function create()
@@ -146,16 +177,11 @@ class ProductController extends Controller
     // Menampilkan detail produk (admin)
     public function show($id)
     {
-        $product = Products::findOrFail($id);
-        return view('admin.products.show', compact('product'));
+        $products = Products::findOrFail($id);
+        return view('admin.products.show', compact('products'));
     }
 
     // Fungsi tambahan lainnya
-    public function produk()
-    {
-        $products = Products::all();
-        return view('produk', compact('products'));
-    }
-
+    
     
 }

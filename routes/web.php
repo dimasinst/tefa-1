@@ -16,14 +16,14 @@ Route::middleware(['guest'])->group(function () {
 Route::get('/', [ProductController::class, 'index'])->name('index');
 
 // Rute untuk home
-Route::get('/home', function () {
-    return redirect()->route('index');
-})->name('home');
+ Route::get('/home', function () {
+     return redirect()->route('index');
+ })->name('home');
 
 // Rute lainnya
 Route::get('/contact', function () {
     return view('sales.contact'); // Rute untuk halaman kontak
-})->name('contact');
+})->name('sales.contact');
 
 Route::get('/about', function () {
     return view('about'); // Rute untuk halaman kontak
@@ -42,7 +42,7 @@ Route::prefix('products')->group(function () {
     Route::delete('destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('show/{id}', [ProductController::class, 'show'])->name('admin.products.show');
     Route::get('create', [ProductController::class, 'create'])->name('product.create');
-    Route::get('product/show/{id}', [ProductController::class, 'show'])->name('product.show'); // Rute untuk detail produk
+    Route::get('product/show/{id}', [ProductController::class, 'showProduct'])->name('detail'); // Rute untuk detail produk
 
 
 });
@@ -58,9 +58,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Rute untuk kategori
-Route::get('/category/{id}', [ProductController::class, 'show'])->name('category.show'); // Rute untuk menampilkan kategori
+Route::get('/cvt', [ProductController::class, 'cvt'])->name('categories.cvt');
+Route::get('/valve', [ProductController::class, 'valve'])->name('categories.valve');
+Route::get('/clutch', [ProductController::class, 'clutch'])->name('categories.clutch');
+Route::get('/sentri', [ProductController::class, 'sentri'])->name('categories.sentri');
 
 
 
-Route::get('/produk', [ProductController::class, 'produk'])->name('produk'); // Rute untuk halaman produk
+
+
 

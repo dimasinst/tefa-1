@@ -15,29 +15,12 @@
                 <button class="btn btn-outline-success" type="submit">Cari</button>
             </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                </li>
                 <form action="{{ route('logout')}}" method="POST">
                 <li class="nav-item">
                     @csrf
                     <button type="submit" class="nav-link" >Logout</button>
                 </li>
                 </form>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}">About Us</a>
-                </li>
-            </ul>
-            <div class="dropdown">
-                <button class="btn btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
             </div>
         </div>
     </div>
@@ -46,4 +29,39 @@
 @if ($message = Session::get('succes'))
 <Script>Swal.fire("{{ $message }}");</Script>
 @endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('search-input');
+        const products = document.querySelectorAll('.card'); // Ambil semua elemen produk
+        const noResultsMessage = document.createElement('p'); // Pesan untuk tidak ada hasil
+
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = searchInput.value.toLowerCase(); // Ambil nilai dari input
+            let found = false; // Variabel untuk cek apakah ada produk yang ditemukan
+
+            noResultsMessage.remove(); // Hapus pesan tidak ada hasil sebelumnya
+
+            products.forEach(product => {
+                const title = product.querySelector('.card-title').textContent.toLowerCase();
+                const description = product.querySelector('.card-text').textContent.toLowerCase();
+
+                // Cek apakah title atau description mengandung searchTerm
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    product.parentElement.style.display = ''; // Tampilkan produk
+                    found = true; // Menandakan ada produk yang ditemukan
+                } else {
+                    product.parentElement.style.display = 'none'; // Sembunyikan produk
+                }
+            });
+
+            if (!found) {
+                noResultsMessage.textContent = 'Tidak ada produk ditemukan.'; // Pesan tidak ada hasil
+                noResultsMessage.classList.add('text-center', 'mt-3');
+                document.querySelector('.tab-content').appendChild(noResultsMessage); // Tampilkan pesan
+            }
+        });
+    });
+</script>
+
 

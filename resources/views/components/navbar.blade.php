@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="MTN" width="30" height="24">
+            <img src="{{ asset('images/mtn.png') }}" alt="MTN" width="30" height="24">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -19,23 +19,17 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('categories.cvt') }}">Produk</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">About Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('sales.contact') }}">inquiry</a>
+                </li>
 
             </ul>
-            <div class="dropdown">
-                <button class="btn btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('contact')}}">contact</a></li>
-                    <li><a class="dropdown-item" href="#">reseller</a></li>
-                </ul>
-            </div>
+           
         </div>
     </div>
 </nav>

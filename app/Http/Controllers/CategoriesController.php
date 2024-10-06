@@ -33,10 +33,9 @@ class CategoriesController extends Controller
     // Menampilkan produk berdasarkan kategori
     public function show($id)
     {
-        $category = Categories::findOrFail($id);
-        $products = Products::where('category_id', $category->id)->get();
-        $categories = Categories::all();
-        return view('index', compact('category', 'products', 'categories'));
+        $categories = Categories::findOrFail($id); // Jika tidak ditemukan, akan melemparkan error 404
+        $products = Products::where('category_id', $categories->id)->get();
+        return view('produk', compact('categories', 'products'));
     }
 
     // Memperbarui kategori
