@@ -4,16 +4,18 @@
 
         <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="{{ route('categories.cvt') }}"  id="pills-cvt-tab"  role="tab" aria-controls="pills-cvt" aria-selected="true">CVT</a>
+
+                <a class="nav-link" href="{{ route('categories.cvt') }}"  id="pills-cvt-tab"  role="tab" aria-controls="pills-cvt" >CVT</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="{{ route('categories.valve') }}"  id="pills-valve-tab"  role="tab" aria-controls="pills-valve" aria-selected="false">Valve</a>
+                <a class="nav-link" href="{{ route('categories.valve') }}"  id="pills-valve-tab"  role="tab" aria-controls="pills-valve" >Valve</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="{{ route('categories.clutch') }}"  id="pills-clutch-tab"  role="tab" aria-controls="pills-clutch" aria-selected="false">Clutch</a>
+                <a class="nav-link" href="{{ route('categories.clutch') }}"  id="pills-clutch-tab"  role="tab" aria-controls="pills-clutch" >Clutch</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" href="{{ route('categories.sentri') }}"  id="pills-sentri-tab"  role="tab" aria-controls="pills-sentri" aria-selected="false">Sentri</a>
+                <a class="nav-link" href="{{ route('categories.sentri') }}"  id="pills-sentri-tab"  role="tab" aria-controls="pills-sentri" >Sentri</a>
+>>>>>>> c8f2fb8 (memperbarui sedikit)
             </li>
         </ul>
     </div>

@@ -68,7 +68,11 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center">
+            <i class="fas fa-save me-2"></i> Simpan 
+        </button>
+    </div>
         </form>
     </div>
 

@@ -6,7 +6,6 @@
     <title>MTN SPRING</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Menggunakan font Google Fonts untuk tampilan yang lebih baik */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
         body {
@@ -16,7 +15,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto */
+            font-family: 'Roboto', sans-serif;
         }
         .card {
             border-radius: 15px;
@@ -25,21 +24,21 @@
         .card-header {
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
-            background-color: #dc3545; /* Warna latar belakang merah */
+            background-color: #dc3545;
         }
         .card-header h4 {
-            font-weight: 500; /* Berat font sedang */
+            font-weight: 500;
         }
         .form-control, .btn {
             border-radius: 10px;
-            font-size: 16px; /* Ukuran font yang lebih besar untuk input dan tombol */
+            font-size: 16px;
         }
         .btn-warning {
             background-color: #ffc107;
             border-color: #ffc107;
-            padding: 10px 20px; /* Padding yang lebih nyaman */
-            font-size: 16px; /* Ukuran font yang nyaman */
-            font-weight: 500; /* Berat font tombol */
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
         }
         .btn-warning:hover {
             background-color: #e0a800;
@@ -47,18 +46,16 @@
             transform: scale(1.05);
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        /* Media Query untuk Perangkat Mobile */
         @media (max-width: 768px) {
             .btn-warning {
-                padding: 12px 24px; /* Padding lebih besar untuk mobile */
-                font-size: 18px; /* Ukuran font lebih besar di mobile */
+                padding: 12px 24px;
+                font-size: 18px;
             }
         }
-        /* Media Query untuk Perangkat Desktop */
         @media (min-width: 769px) {
             .btn-warning {
-                padding: 10px 20px; /* Padding lebih kecil untuk desktop */
-                font-size: 16px; /* Ukuran font lebih kecil di desktop */
+                padding: 10px 20px;
+                font-size: 16px;
             }
         }
     </style>
@@ -73,26 +70,26 @@
                     <h4 class="mb-0">Admin</h4>
                 </div>
                 <div class="card-body">
-                    @if (session('error'))
+                    @if (session('failed'))
                     <div class="alert alert-danger">
-                        {{ session('$message') }}
+                        {{ session('failed') }}
                     </div>
-                @endif
-                    <form action="{{ route ("auth.authenticate") }}" method="POST">
+                    @endif
+                    <form action="{{ route('login.authenticate') }}" method="POST">
                         @csrf
                         <div class="mb-4">
                             <label for="USN" class="form-label">Username</label>
-                            <input type="USN" name="USN" class="form-control" id="USN" placeholder="Masukkan Username Anda" >
+                            <input type="text" name="USN" class="form-control" id="USN" placeholder="Masukkan Username Anda">
                             @error('USN')
-                            <small>username anda tidak boleh kosong</small>
+                            <small>Username Anda tidak boleh kosong</small>
                             @enderror
                         </div>
 
                         <div class="mb-4">
                             <label for="password" class="form-label">Kata Sandi</label>
-                            <input type="password" name="password"  class="form-control" id="password" placeholder="Masukkan kata sandi Anda" >
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan kata sandi Anda">
                             @error('password')
-                            <small>password anda tidak boleh kosong</small>
+                            <small>Password Anda tidak boleh kosong</small>
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-warning w-100">Login</button>
@@ -107,7 +104,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @if ($message = Session::get('failed'))
-<Script>Swal.fire("{{ $message }}");</Script>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal Login',
+        text: "{{ $message }}",
+        showConfirmButton: true
+    });
+</script>
 @endif
 
 </body>

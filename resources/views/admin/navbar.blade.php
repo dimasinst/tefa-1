@@ -15,6 +15,7 @@
                 <button class="btn btn-outline-success" type="submit">Cari</button>
             </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<<<<<<< HEAD
                 <form action="{{ route('logout')}}" method="POST">
                 <li class="nav-item">
                     @csrf
@@ -22,13 +23,27 @@
                 </li>
                 </form>
             </div>
+=======
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                        @csrf
+                        <button type="submit" class="nav-link" style="border: none; background: none; cursor: pointer;">Logout</button>
+                    </form>
+                </li>
+            </ul>
+            
+>>>>>>> c8f2fb8 (memperbarui sedikit)
         </div>
     </div>
 </nav>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if ($message = Session::get('succes'))
-<Script>Swal.fire("{{ $message }}");</Script>
+@if ($message = Session::get('success'))
+<script>Swal.fire("{{ $message }}");</script>
 @endif
+<<<<<<< HEAD
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -65,3 +80,5 @@
 </script>
 
 
+=======
+>>>>>>> c8f2fb8 (memperbarui sedikit)

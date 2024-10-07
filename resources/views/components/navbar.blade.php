@@ -19,6 +19,7 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="{{ route('categories.cvt') }}">Produk</a>
                 </li>
                 <li class="nav-item">
@@ -30,6 +31,24 @@
 
             </ul>
            
+=======
+                    <a class="nav-link" href="{{ route('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('sales.contact') }}">Inquery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('categories.cvt') }}">Products</a>
+                </li>
+              
+                
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('resellers.index') }}">Partners</a> <!-- Tautan ke reseller.index -->
+            </li>
+
+            </ul>
+        
+>>>>>>> c8f2fb8 (memperbarui sedikit)
         </div>
     </div>
 </nav>

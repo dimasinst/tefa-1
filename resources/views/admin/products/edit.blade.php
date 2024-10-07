@@ -5,7 +5,7 @@
     @include('components.head')
 </head>
 <body>
-    @include('admin.navbar')
+@include('admin.navbar')
 
     <div class="container mt-5 pt-5">
         <h2 class="mb-4">Edit Produk</h2>

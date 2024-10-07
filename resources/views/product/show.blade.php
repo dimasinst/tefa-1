@@ -37,7 +37,11 @@
         <div class="card p-4">
             <div class="row align-items-center">
                 <div class="col-md-4 mb-4 mb-md-0 img-container">
+<<<<<<< HEAD
                     <img src="{{ asset('storage/' . $productDetail->image) }}" alt="{{ $productDetail->name }}" class="img-fluid">
+=======
+                    <img src="{{ asset('storage/' . $productDetail->image) }}" class="card-img-top">
+>>>>>>> c8f2fb8 (memperbarui sedikit)
                 </div>
 
                 <div class="col-md-8">
@@ -49,6 +53,7 @@
                             </tr>
                             <tr>
                                 <td><strong>WIRE :</strong></td>
+<<<<<<< HEAD
                                 <td>{{ $productDetail->Wire }}</td>
                             </tr>
                             <tr>
@@ -66,6 +71,25 @@
                             <tr>
                                 <td><strong>SPRING RATE:</strong></td>
                                 <td>{{ $productDetail->Spring_rate }}</td>
+=======
+                                <td>{{ $productDetail->wire }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OUTSIDE:</strong></td>
+                                <td>{{ $productDetail->outside }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FREE HEIGHT:</strong></td>
+                                <td>{{ $productDetail->free_height }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SOLID HEIGHT:</strong></td>
+                                <td>{{ $productDetail->solid_height }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SPRING RATE:</strong></td>
+                                <td>{{ $productDetail->spring_rate }}</td>
+>>>>>>> c8f2fb8 (memperbarui sedikit)
                             </tr>
                         </tbody>
                     </table>
@@ -79,7 +103,9 @@
         <h2 class="mt-5">Produk Lain di Kategori yang Sama</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
             @foreach($relatedProducts as $product)
-                <div class="col-md-4">
+
+
+                <div class="col-md-3">
                     <div class="card">
                         <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                         <div class="card-body">

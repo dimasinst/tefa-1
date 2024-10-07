@@ -39,7 +39,7 @@
                                 <th>Deskripsi</th>
                                 <th>Gambar</th>
                                 <th>Kategori</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                                     </td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>
-                                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary btn-sm">Read</a>
+                                    <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-info btn-sm">Detail</a>
                                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
@@ -74,6 +74,54 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Daftar Reseller -->
+                <h2 class="mt-5">Daftar Partners</h2>
+
+                <div class="mb-3">
+                    <a href="{{ route('resellers.create') }}" class="btn btn-success me-2">
+                        <i class="bi bi-plus-circle"></i> Create
+                    </a>
+                </div>
+
+                <table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Provinsi</th>
+            <th>Kota</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if($resellers->isEmpty())
+            <tr>
+                <td colspan="4" class="text-center">Tidak ada rekanan ditemukan.</td>
+            </tr>
+        @else
+            @foreach ($resellers as $reseller)
+                <tr>
+                    <td>{{ $reseller->name }}</td>
+                    <td>{{ $reseller->province }}</td>
+                    <td>{{ $reseller->city }}</td>
+                    <td>
+                        <!-- Tombol Detail -->
+                        <a href="{{ route('admin.resellers.show', $reseller->id) }}" class="btn btn-info btn-sm">Detail</a>
+                        
+                        <!-- Tombol Edit -->
+                        <a href="{{ route('resellers.edit', $reseller->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        
+                        <!-- Tombol Hapus -->
+                        <form action="{{ route('resellers.destroy', $reseller->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus reseller ini?');" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+</table>
             </div>
         </div>
     </div>

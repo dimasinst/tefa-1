@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,8 +13,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
+<<<<<<< HEAD
 
         return view('index');
+=======
+        $categories = Categories::all(); // Mengambil semua kategori dari database
+        return view('index', compact('categories')); // Mengirim data kategori ke view
+>>>>>>> c8f2fb8 (memperbarui sedikit)
     }
 
     public function about()
@@ -182,6 +187,10 @@ public function showProduct($id)
     }
 
     // Fungsi tambahan lainnya
+<<<<<<< HEAD
+    
+=======
+>>>>>>> c8f2fb8 (memperbarui sedikit)
     
     
 }
