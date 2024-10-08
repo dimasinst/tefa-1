@@ -12,15 +12,11 @@ class ProductController extends Controller
     // Menampilkan daftar produk (public)
     public function index(Request $request)
     {
-
-<<<<<<< HEAD
-
-        return view('index');
-=======
-        $categories = Categories::all(); // Mengambil semua kategori dari database
+         $categories = Categories::all(); // Mengambil semua kategori dari database
         return view('index', compact('categories')); // Mengirim data kategori ke view
->>>>>>> c8f2fb8 (memperbarui sedikit)
+
     }
+
 
     public function about()
 {
@@ -115,13 +111,13 @@ public function showProduct($id)
         $categories = Categories::all(); // Mengambil kategori jika perlu
         return view('admin.products.edit', compact('product', 'categories'));  // Mengirimkan data produk ke view
     }
-    
+
 
     // Memperbarui produk (admin)
     public function update(Request $request, $id)
     {
         $product = Products::findOrFail($id); // Mengambil produk berdasarkan ID
-    
+
         $request->validate([
             'name'          => 'required|string|max:255',
             'description'   => 'required|string',
@@ -134,7 +130,7 @@ public function showProduct($id)
             'spring_rate'   => 'required|string',
             'category_id'   => 'required|integer|exists:categories,id'
         ]);
-    
+
         // Jika ada gambar yang di-upload
         if ($request->hasFile('image')) {
             // Hapus gambar lama jika ada
@@ -146,7 +142,7 @@ public function showProduct($id)
             // Jika tidak ada gambar baru, gunakan gambar lama
             $imagePath = $product->image;
         }
-    
+
         $product->update([
             'name'          => $request->name,
             'description'   => $request->description,
@@ -159,10 +155,10 @@ public function showProduct($id)
             'spring_rate'   => $request->spring_rate,
             'category_id'   => $request->category_id,
         ]);
-    
+
         return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully');
     }
-    
+
 
 
     // Menghapus produk (admin)
@@ -187,10 +183,4 @@ public function showProduct($id)
     }
 
     // Fungsi tambahan lainnya
-<<<<<<< HEAD
-    
-=======
->>>>>>> c8f2fb8 (memperbarui sedikit)
-    
-    
 }

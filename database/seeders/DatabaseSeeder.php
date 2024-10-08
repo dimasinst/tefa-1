@@ -18,12 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $this->call([
-<<<<<<< HEAD
-            admin::class
-            ,
-=======
             admin::class,
->>>>>>> c8f2fb8 (memperbarui sedikit)
             categorySeeder::class
         ]);
     }

@@ -8,7 +8,7 @@
             max-height: 600px;
             display: block;
             margin-left: auto;
-            margin-right: auto; 
+            margin-right: auto;
         }
         .card-img-top {
             width: 100%;
@@ -30,11 +30,7 @@
             @foreach ($products as $product)
                 <div class="col-md-3">
                     <div class="card">
-<<<<<<< HEAD
-                        <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->name }}">
-=======
                         <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
->>>>>>> c8f2fb8 (memperbarui sedikit)
                         <div class="card-body">
                             <h5 class="card-title">{{ $product->name }}</h5>
                             <p class="card-text">{{ $product->description }}</p>

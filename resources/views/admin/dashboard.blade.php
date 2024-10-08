@@ -1,12 +1,10 @@
 @extends('layouts.app') <!-- Pastikan Anda memiliki layout utama -->
-
 @section('content')
-<head> 
+<head>
     @include('components.head')
 </head>
 <body>
     @include('admin.navbar')
-
     <div class="container mt-5 pt-5">
         <div class="row">
             <div class="col-md-12">
@@ -30,7 +28,7 @@
                         <i class="bi bi-plus-circle"></i> Create
                     </a>
                 </div>
-                
+
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead class="table-light">
@@ -63,7 +61,7 @@
                                             @method('DELETE')
                                             <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Delete</button>
                                         </form>
-                                        
+
                                     </td>
                                 </tr>
                             @empty
@@ -106,10 +104,10 @@
                     <td>
                         <!-- Tombol Detail -->
                         <a href="{{ route('admin.resellers.show', $reseller->id) }}" class="btn btn-info btn-sm">Detail</a>
-                        
+
                         <!-- Tombol Edit -->
                         <a href="{{ route('resellers.edit', $reseller->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        
+
                         <!-- Tombol Hapus -->
                         <form action="{{ route('resellers.destroy', $reseller->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus reseller ini?');" style="display:inline-block;">
                             @csrf
@@ -126,7 +124,7 @@
         </div>
     </div>
 
-    
+
     <!-- Skrip SweetAlert sudah diikutsertakan di layout atau head -->
 </body>
 @endsection

@@ -15,15 +15,6 @@
                 <button class="btn btn-outline-success" type="submit">Cari</button>
             </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<<<<<<< HEAD
-                <form action="{{ route('logout')}}" method="POST">
-                <li class="nav-item">
-                    @csrf
-                    <button type="submit" class="nav-link" >Logout</button>
-                </li>
-                </form>
-            </div>
-=======
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
@@ -34,8 +25,6 @@
                     </form>
                 </li>
             </ul>
-            
->>>>>>> c8f2fb8 (memperbarui sedikit)
         </div>
     </div>
 </nav>
@@ -43,8 +32,6 @@
 @if ($message = Session::get('success'))
 <script>Swal.fire("{{ $message }}");</script>
 @endif
-<<<<<<< HEAD
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('search-input');
@@ -80,5 +67,4 @@
 </script>
 
 
-=======
->>>>>>> c8f2fb8 (memperbarui sedikit)
+

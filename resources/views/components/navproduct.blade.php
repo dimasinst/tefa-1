@@ -15,7 +15,6 @@
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" href="{{ route('categories.sentri') }}"  id="pills-sentri-tab"  role="tab" aria-controls="pills-sentri" >Sentri</a>
->>>>>>> c8f2fb8 (memperbarui sedikit)
             </li>
         </ul>
     </div>
