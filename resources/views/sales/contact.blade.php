@@ -48,13 +48,13 @@
                     jika anda tertarik menjadi rekanan/reseller hubungi kami di bawah
                 </p>
                     <div class="contact-item">
-                        <a href="mailto:info@contoh.com" class="btn btn-outline-primary btn-lg">
+                        <a href="https://mail.google.com/mail/u/0/?hl=en#inbox?compose=CllgCHrfShxXMBXHzhVKLZnXTQmwLckRptZJSHSdMFShFsDGsJCXcZwTtwslwtjgffnZzsPGgqB" class="btn btn-outline-primary btn-lg">
                             <i class="contact-icon fas fa-envelope"></i> Kirim Email
                         </a>
                     </div>
                     <div class="contact-item">
                         <a href="https://www.instagram.com/mtnspring_japan.official/" class="btn btn-outline-info btn-lg" target="_blank">
-                            <i class="contact-icon fab fa-instagram"></i> Ikuti di Instagram
+                            <i class="contact-icon fab fa-instagram"></i> instagram
                         </a>
                     </div>
                 </div>

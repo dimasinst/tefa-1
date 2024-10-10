@@ -4,6 +4,7 @@
         .card {
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 15   0%; /* Mengatur lebar card agar sesuai dengan container */
         }
         .table th, .table td {
             vertical-align: middle;
@@ -12,6 +13,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-img-top {
+            height: 430px; /* Mengatur tinggi gambar agar memanjang */
+            object-fit: cover; /* Mempertahankan proporsi gambar */
+            width: 100%; /* Gambar memenuhi lebar container */
         }
         .content {
             min-height: 80vh;
@@ -27,6 +33,9 @@
             bottom: 0;
             width: 100%;
         }
+        /* Menambahkan gaya untuk flexbox */
+        
+        
     </style>
 </head>
 <body>
@@ -35,11 +44,12 @@
     <!-- Detail Produk Utama -->
     <div class="container mt-5 content">
         <div class="card p-4">
-            <div class="row align-items-center">
-                <div class="col-md-4 mb-4 mb-md-0 img-container">
+            <div class="row align-items-start"> <!-- Menggunakan align-items-start untuk menyesuaikan posisi -->
+                <div class="col-md-5 mb-4 mb-md-0 img-container">
                     <img src="{{ asset('storage/' . $productDetail->image) }}" class="card-img-top">
                 </div>
-                <div class="col-md-8">
+
+                <div class="col-md-7 specification"> <!-- Menggunakan kolom untuk spesifikasi -->
                     <table class="table table-striped table-hover">
                         <tbody>
                             <tr>
@@ -96,3 +106,4 @@
         @include('components.footer')
     </footer>
 </body>
+

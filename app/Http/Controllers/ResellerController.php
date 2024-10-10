@@ -39,7 +39,7 @@ class ResellerController extends Controller
     public function edit($id)
     {
         $reseller = Reseller::findOrFail($id); // Pastikan ini mengembalikan reseller yang ada
-        return view('admin.resellers.edit', compact('reseller'));
+        return view('admin.                                                                                                                                                                                                                                                                                                                                                                             resellers.edit', compact('reseller'));
     }
     
     public function update(Request $request, $id)

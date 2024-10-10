@@ -4,7 +4,6 @@
 
         <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-
                 <a class="nav-link" href="{{ route('categories.cvt') }}"  id="pills-cvt-tab"  role="tab" aria-controls="pills-cvt" >CVT</a>
             </li>
             <li class="nav-item" role="presentation">

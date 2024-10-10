@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('images/mtn.png') }}" alt="MTN" width="30" height="24">
+            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="MTN" width="30" height="24">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -32,8 +32,12 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{{ route('resellers.index') }}">Partners</a> <!-- Tautan ke reseller.index -->
             </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="{{ route('other.index') }}">Other</a>
+                </li>
 
             </ul>
+        
         </div>
     </div>
 </nav>

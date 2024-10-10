@@ -29,6 +29,9 @@ Route::get('/about', function () {
     return view('about'); // Rute untuk halaman kontak
 })->name('about');
 
+Route::get('/index', function () {
+    return view('other.index'); // Rute untuk halaman kontak
+})->name('other.index');
 
 
 Route::prefix('resellers')->group(function () {
