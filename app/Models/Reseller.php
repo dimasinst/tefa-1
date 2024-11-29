@@ -9,12 +9,6 @@ class Reseller extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'province',
-        'city',
-        'alamat',
-        'kodepos',
-        'phone'
-
+        'name', 'phone', 'province', 'city', 'instagram', 'alamat', 'status',
     ];
 }

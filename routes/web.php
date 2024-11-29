@@ -25,40 +25,48 @@ Route::get('/contact', function () {
     return view('sales.contact'); // Rute untuk halaman kontak
 })->name('sales.contact');
 
-Route::get('/about', function () {
-    return view('about'); // Rute untuk halaman kontak
-})->name('about');
-
-Route::get('/index', function () {
+Route::get('/other', function () {
     return view('other.index'); // Rute untuk halaman kontak
 })->name('other.index');
 
+// route
+// Route untuk user mengajukan reseller
+Route::post('resellers', [ResellerController::class, 'store'])->name('resellers.store');
+Route::get('/resellers', [ResellerController::class, 'indexUser'])->name('reseller.index');
+Route::get('/resellers/{id}', [ResellerController::class, 'showUser'])->name('reseller.show');
 
-Route::prefix('resellers')->group(function () {
-    Route::get('/', [ResellerController::class, 'index'])->name('resellers.index');
-    Route::get('/create', [ResellerController::class, 'create'])->name('resellers.create');
-    Route::post('/store', [ResellerController::class, 'store'])->name('resellers.store');
-    Route::get('/{id}/edit', [ResellerController::class, 'edit'])->name('resellers.edit');
-    Route::put('/{id}', [ResellerController::class, 'update'])->name('resellers.update');    
-    Route::delete('/{reseller}', [ResellerController::class, 'destroy'])->name('resellers.destroy');
-    Route::get('/{id}', [ResellerController::class, 'userShow'])->name('user.resellers.show');
-});
-Route::get('admin/resellers/{id}', [ResellerController::class, 'show'])->name('admin.resellers.show');
+// Untuk Admin (semua reseller)
+Route::get('/admin/resellers', [ResellerController::class, 'indexAdmin'])->name('admin.resellers.index');
+    
+// Detail reseller untuk admin
+Route::get('/admin/resellers/{id}', [ResellerController::class, 'showAdmin'])->name('admin.resellers.show');
 
-// Rute untuk produk
-Route::prefix('products')->group(function () {
-    Route::get('create', [ProductController::class, 'create'])->name('products.create');
+// Edit reseller untuk admin
+Route::get('/resellers/{id}/edit', [ResellerController::class, 'editAdmin'])->name('admin.resellers.edit');
+
+// Update reseller untuk admin
+Route::put('/resellers/{id}', [ResellerController::class, 'updateAdmin'])->name('admin.resellers.update');
+
+// Hapus reseller untuk admin
+Route::delete('/resellers/{id}', [ResellerController::class, 'destroyAdmin'])->name('admin.resellers.delete');
+    Route::put('/resellers/{id}', [ResellerController::class, 'updateAdmin'])->name('admin.resellers.update');
+    Route::post('/admin/resellers/{reseller}/approve', [ResellerController::class, 'approve'])->name('admin.resellers.approve');
+    Route::post('/admin/resellers/{reseller}/reject', [ResellerController::class, 'reject'])->name('admin.resellers.reject');
+
+    
+    Route::prefix('products')->group(function () {
     Route::post('store', [ProductController::class, 'store'])->name('products.store');
+    Route::post('Sentristore', [ProductController::class, 'sentristore'])->name('products.sentri.store');
     Route::get('edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('update/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('show/{id}', [ProductController::class, 'show'])->name('admin.products.show');
-    Route::get('create', [ProductController::class, 'create'])->name('product.create');
+    Route::get('create', [ProductController::class, 'create'])->name('products.create');
+    Route::get('create/sentri', [ProductController::class, 'createSentri'])->name('products.createSentri');
     Route::get('product/show/{id}', [ProductController::class, 'showProduct'])->name('detail'); // Rute untuk detail produk
-
-
 });
 
+Route::get('/admin/products', [ProductController::class, 'indexAdmin'])->name('admin.products.index');
 
 
 

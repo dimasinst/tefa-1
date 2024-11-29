@@ -1,75 +1,173 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
     @include('components.head')
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f7f8f9;
+            margin: 0;
+            padding: 0;
         }
-        .contact-card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-top: 80px; /* Jarak atas dari navbar */
-            text-align: center; /* Rata tengah untuk konten */
-            border: 2px solid transparent; /* Border transparan untuk animasi */
-            transition: border-color 0.4s ease; /* Transisi border */
+
+        .inquiry-section {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
         }
-        .contact-card:hover {
-            border-color: #000; /* Warna border saat hover */
+
+        .inquiry-section h2 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
-        .contact-icon {
-            font-size: 28px; /* Ukuran ikon yang lebih besar */
-            color: #007bff;
+
+        .inquiry-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ddd;
         }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
         .contact-item {
-            margin-bottom: 20px; /* Jarak antar item */
+            background-color: #34495e;
+            color: #ecf0f1;
+            border-radius: 8px;
+            padding: 15px;
+            width: 120px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        h2 {
-            margin-bottom: 30px; /* Jarak bawah judul */
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background-color: #3498db;
+            color: #fff;
         }
-        .contact-description {
-            font-size: 16px;
-            margin-bottom: 20px; /* Tambah jarak bawah deskripsi */
-            color: #555; /* Warna teks deskripsi */
+
+        .contact-item i {
+            font-size: 2.2rem;
+        }
+
+        .form-wrapper {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ff5722, #fbbd00);
+            border: none;
+            color: #fff;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #f44336, #ffc107);
+        }
+
+        @media (max-width: 768px) {
+            .inquiry-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .inquiry-section p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     @include('components.navbar')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="contact-card">
-                    <h2>Kontak Kami</h2>
-                    <p class="contact-description">
-                    jika anda tertarik menjadi rekanan/reseller hubungi kami di bawah
-                </p>
-                    <div class="contact-item">
-                        <a href="https://mail.google.com/mail/u/0/?hl=en#inbox?compose=CllgCHrfShxXMBXHzhVKLZnXTQmwLckRptZJSHSdMFShFsDGsJCXcZwTtwslwtjgffnZzsPGgqB" class="btn btn-outline-primary btn-lg">
-                            <i class="contact-icon fas fa-envelope"></i> Kirim Email
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <a href="https://www.instagram.com/mtnspring_japan.official/" class="btn btn-outline-info btn-lg" target="_blank">
-                            <i class="contact-icon fab fa-instagram"></i> instagram
-                        </a>
-                    </div>
-                </div>
+    <!-- Inquiry Section -->
+    <section class="inquiry-section" id="inquiry">
+        <h2>Hubungi Kami</h2>
+        <p>Untuk informasi lebih lanjut, hubungi kami melalui platform berikut.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="https://instagram.com/yourusername" target="_blank" class="text-decoration-none text-white">
+                    <i class="bi bi-instagram"></i>
+                    <p>Instagram</p>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:your-email@example.com" class="text-decoration-none text-white">
+                    <i class="bi bi-envelope"></i>
+                    <p>Email</p>
+                </a>
             </div>
         </div>
+    </section>
+
+    <!-- Form Reseller -->
+    <div class="form-wrapper">
+        <h3 class="text-center">Ajukan Menjadi Reseller</h3>
+        <form action="{{ route('resellers.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan nama lengkap" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Nomor Telepon</label>
+                <input type="text" id="phone" name="phone" class="form-control" placeholder="Masukkan nomor telepon" required>
+            </div>
+            <div class="mb-3">
+                <label for="province" class="form-label">Provinsi</label>
+                <input type="text" id="province" name="province" class="form-control" placeholder="Masukkan provinsi" required>
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">Kota</label>
+                <input type="text" id="city" name="city" class="form-control" placeholder="Masukkan kota" required>
+            </div>
+            <div class="mb-3">
+                <label for="instagram" class="form-label">Akun Instagram</label>
+                <input type="text" id="instagram" name="instagram" class="form-control" placeholder="Masukkan akun Instagram" required>
+            </div>
+            <div class="mb-3">
+                <label for="alamat" class="form-label">Alamat Lengkap</label>
+                <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat lengkap" required>
+            </div>
+            <button type="submit" class="btn">Ajukan</button>
+        </form>
     </div>
 
     @include('components.footer')
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        AOS.init({ once: true });
     </script>
 </body>
+
 </html>

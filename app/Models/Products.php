@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model // Ubah 'Products' menjadi 'Product'
+class Products extends Model 
 {
     use HasFactory;
 
     protected $table = 'products';
     protected $primaryKey = 'id';
     protected $fillable = [
-        "name", 
-        "description", 
+        "name",
+        "description",
         "image",
-        "model", // Sesuaikan nama atribut sesuai konvensi (huruf kecil)
+        "model", 
         "wire",
         "outside",
         "free_height",
         "solid_height",
         "spring_rate",
+        "Free_length",
+        "Initial_Tension",
         "category_id"
     ];
 
@@ -28,5 +30,4 @@ class Products extends Model // Ubah 'Products' menjadi 'Product'
     {
         return $this->belongsTo(categories::class); // Pastikan relasi ini sudah ada
     }
-
 }

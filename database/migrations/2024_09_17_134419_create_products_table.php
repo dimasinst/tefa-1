@@ -13,12 +13,14 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
-            $table->string('model'); // Ganti dari pnp ke model
+            $table->string('model'); 
             $table->string('wire');
             $table->string('outside');
-            $table->string('free_height');
-            $table->string('solid_height');
+            $table->string('free_height')->nullable();;
+            $table->string('solid_height')->nullable();;
             $table->string('spring_rate');
+            $table->string('Free_length')->nullable();
+            $table->string('Initial_Tension')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

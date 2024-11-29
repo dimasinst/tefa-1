@@ -6,10 +6,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class admins extends Authenticatable
 {
-    protected $table = 'users'; // Mengarahkan ke tabel admins
+    protected $table = 'users'; 
 
     protected $fillable = [
-        'nickname', 'password', // Sesuaikan dengan kolom yang ada di tabel admins
+        'nickname', 'password', 
     ];
 
     protected $hidden = [

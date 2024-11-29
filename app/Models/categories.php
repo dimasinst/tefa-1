@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categories extends Model // Ubah 'categories' menjadi 'Category'
+class categories extends Model 
 {
     protected $table = 'categories';
     protected $primaryKey = 'id';
@@ -12,6 +12,6 @@ class categories extends Model // Ubah 'categories' menjadi 'Category'
 
     public function products()
     {
-        return $this->hasMany(Products::class); // Ubah 'Products' menjadi 'Product'
+        return $this->hasMany(Products::class); 
     }
 }

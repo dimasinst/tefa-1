@@ -15,7 +15,7 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['nickname' => $request->USN, 'password' => $request->password])) {
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard'); // Arahkan ke admin dashboard
+            return redirect()->route('admin.dashboard'); 
         } else {
             return redirect()->route('login')->with('failed', 'Username atau Password salah');
         }
@@ -29,4 +29,4 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login');
     }
-}
+}   

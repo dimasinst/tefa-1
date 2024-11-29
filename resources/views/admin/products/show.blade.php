@@ -1,60 +1,52 @@
+@extends('layouts.admin') <!-- Extend the admin layout -->
 
-<head>
-    @include('components.head')
-    <style>
-        .card {
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-        .table th, .table td {
-            vertical-align: middle;
-        }
-        .img-container {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .img-container img {
-            width: 100%;
-            height: auto; /* Menjaga rasio gambar */
-            max-height: 400px; /* Batas tinggi gambar */
-            object-fit: cover; /* Agar gambar tetap proporsional dalam kontainernya */
-        }
-        .content {
-            min-height: 80vh;
-            padding-bottom: 20px;
-        }
-        footer {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        .navbar {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-@include('admin.navbar')
+@section('content')
+
+    <!-- Product Details -->
     <div class="container mt-5 content">
-        <div class="card p-4">
+        <div class="card p-4 shadow-lg border-0 rounded-lg">
             <div class="row align-items-center">
-                <div class="col-md-4 mb-4 mb-md-0 img-container">
-                    <!-- Pastikan untuk menggunakan path gambar yang benar -->
-                    <img src="{{ asset('storage/' . $products->image) }}" alt="{{ $products->name }}">
+                <!-- Product Image Section -->
+                <div class="col-md-6 mb-4 mb-md-0 img-container">
+                    <img src="{{ asset('storage/' . $products->image) }}" class="card-img-top img-fluid rounded-lg shadow-sm">
                 </div>
-                <div class="col-md-8">
-                    <table class="table table-striped table-hover">
+
+                <!-- Product Information Table -->
+                <div class="col-md-6">
+                    <table class="table table-striped table-hover table-bordered">
                         <tbody>
                             <tr>
                                 <td><strong>Model:</strong></td>
                                 <td>{{ $products->name }}</td>
                             </tr>
+                            @if ($products->category->name === 'Sentri')
                             <tr>
-                                <td><strong>WIRE :</strong></td>
+                                <td><strong>WIRE:</strong></td>
+                                <td>{{ $products->wire }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outside:</strong></td>
+                                <td>{{ $products->outside }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Free Length:</strong></td>
+                                <td>{{ $products->Free_length }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Initial Tension:</strong></td>
+                                <td>{{ $products->Initial_Tension }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spring Rate:</strong></td>
+                                <td>{{ $products->spring_rate }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Description:</strong></td>
+                                <td>{{ $products->description }}</td>
+                            </tr>
+                            @else
+                            <tr>
+                                <td><strong>WIRE:</strong></td>
                                 <td>{{ $products->wire }}</td>
                             </tr>
                             <tr>
@@ -74,9 +66,10 @@
                                 <td>{{ $products->spring_rate }}</td>
                             </tr>
                             <tr>
-                                <td><strong>deskripsi</strong></td>
-                                <td>{{$products->description}}</td>
+                                <td><strong>Description:</strong></td>
+                                <td>{{ $products->description }}</td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -84,11 +77,64 @@
         </div>
     </div>
 
+    <!-- Back Button -->
     <div class="text-center mt-4">
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kembali ke Dashboard</a>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-back px-5 py-3 rounded-pill">Kembali</a>
     </div>
-    <footer class="bg-light py-3">
-        @include('components.footer')
-    </footer>
-</body>
+    <style>
+    .product-name {
+        font-size: 2.5rem; /* Larger font size for product name */
+        text-align: center; /* Center align */
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #2c3e50; /* Darker shade for a professional look */
+    }
+
+    .card {
+        background-color: #ffffff; /* White background for contrast */
+    }
+
+    .img-container {
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content {
+        padding-bottom: 20px;
+        margin-top: 50px;
+    }
+
+    .product-description {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        line-height: 1.7;
+        text-align: justify;
+        margin-top: 30px;
+    }
+
+    .btn-back {
+        background: linear-gradient(135deg, #ff5e5e, #ff9f1c); /* Gradient for the button */
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 25px;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-back:hover {
+        background: linear-gradient(135deg, #ff9f1c, #ff5e5e); /* Hover effect */
+        transform: translateY(-5px); /* Slight lift effect on hover */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+@endsection
+
 

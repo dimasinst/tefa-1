@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Reseller;
@@ -7,100 +6,123 @@ use Illuminate\Http\Request;
 
 class ResellerController extends Controller
 {
-    // Tampilkan semua reseller
-    public function index()
-    {
-        $resellers = Reseller::all();
-        return view('reseller.index', compact('resellers'));
-    }
-
-    // Tampilkan form untuk menambah reseller baru
-    public function create()
-    {
-        return view('admin.resellers.create'); // Sesuaikan dengan file yang ada
-    }
-
-    // Simpan reseller baru ke database
+    // Menyimpan data reseller
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
             'province' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'alamat' => 'nullable|string|max:255',
-            'kodepos' => 'nullable|string|max:10',
-            'phone' => 'required|string|max:20', // Validasi untuk nomor telepon
+            'instagram' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
         ]);
 
-        Reseller::create($request->all()); // Simpan reseller baru
-        return redirect()->route('admin.dashboard')->with('success', 'Reseller berhasil ditambahkan.');
+        Reseller::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'province' => $request->province,
+            'city' => $request->city,
+            'instagram' => $request->instagram,
+            'alamat' => $request->alamat,
+            'status' => 'pending',  // Status awal adalah 'pending'
+        ]);
+
+        return redirect()->back()->with('success', 'Data berhasil dikirim!');
     }
 
-    public function edit($id)
+    // Menampilkan daftar reseller di admin
+    public function indexUser()
     {
-        $reseller = Reseller::findOrFail($id); // Pastikan ini mengembalikan reseller yang ada
-        return view('admin.                                                                                                                                                                                                                                                                                                                                                                             resellers.edit', compact('reseller'));
+        // Mengambil reseller yang hanya disetujui untuk user
+        $resellers = Reseller::where('status', 'approved')->get();
+        return view('reseller.index', compact('resellers'));
+    }
+
+    // Untuk Admin
+    public function indexAdmin()
+    {
+        // Mengambil semua reseller untuk admin
+        $resellers = Reseller::all();
+        return view('admin.resellers.index', compact('resellers'));
+    }
+
+    // Untuk User melihat detail reseller
+    public function showUser($id)
+    {
+        $reseller = Reseller::findOrFail($id);
+
+        // Pastikan reseller ini disetujui untuk user
+        if ($reseller->status != 'approved') {
+            return redirect()->route('resellers.index')->with('error', 'This reseller is not available.');
+        }
+
+        return view('reseller.show', compact('reseller'));
+    }
+
+    // Untuk Admin melihat detail reseller
+    public function showAdmin($id)
+    {
+        $reseller = Reseller::findOrFail($id);
+
+        // Admin bisa melihat semua reseller
+        return view('resellers.show', compact('reseller'));
+    }
+
+    // Mengapprove reseller
+    public function approve($id)
+    {
+        $reseller = Reseller::findOrFail($id);
+        $reseller->status = 'approved';
+        $reseller->save();
+
+        return redirect()->route('admin.resellers.index')->with('success', 'Reseller approved!');
+    }
+
+    // Menolak reseller
+    public function reject($id)
+    {
+        $reseller = Reseller::findOrFail($id);
+        $reseller->status = 'rejected';
+        $reseller->save();
+
+        return redirect()->route('admin.resellers.index')->with('error', 'Reseller rejected!');
     }
     
-    public function update(Request $request, $id)
+    public function editAdmin($id)
     {
+        $reseller = Reseller::findOrFail($id);
+        return view('resellers.edit', compact('reseller'));
+    }
+
+    // Method untuk Update reseller oleh admin
+    public function updateAdmin(Request $request, $id)
+    {
+        $reseller = Reseller::findOrFail($id);
+
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'province' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'phone' => 'nullable|string|max:15', // Sesuaikan dengan kebutuhan Anda
+            'status' => 'required|string',
+            'address' => 'required|string',
+            'phone_number' => 'required|string',
         ]);
-    
-        // Temukan reseller berdasarkan ID
+
+        // Update data reseller
+        $reseller->update($request->all());
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('admin.resellers.index')->with('success', 'Reseller updated successfully.');
+    }
+    public function destroyAdmin($id)
+    {
         $reseller = Reseller::findOrFail($id);
-    
-        // Update data
-        $reseller->name = $request->input('name');
-        $reseller->province = $request->input('province');
-        $reseller->city = $request->input('city');
-        $reseller->phone = $request->input('phone');
-    
-        // Simpan perubahan
-        $reseller->save();
-    
-        // Redirect atau berikan feedback
-        return redirect()->route('admin.dashboard')->with('success', 'Data reseller berhasil diupdate!');
-    }
-    
-    
+        
+        // Hapus reseller
+        $reseller->delete();
 
-    // Hapus reseller dari database
-    public function destroy($id)
-    {
-        $reseller = Reseller::findOrFail($id); // Temukan reseller berdasarkan ID
-        $reseller->delete(); // Hapus reseller
-        return redirect()->route('admin.dashboard')->with('success', 'Reseller berhasil dihapus.');
+        // Redirect dengan pesan sukses
+        return redirect()->route('admin.resellers.index')->with('success', 'Reseller deleted successfully.');
     }
-
-    // Tampilkan semua reseller ke pengguna (user)
-    public function userIndex()
-    {
-        $resellers = Reseller::all();
-        return view('resellers.welcome', compact('resellers')); // Sesuaikan dengan file yang ada
-    }
-
-    // Tampilkan detail reseller untuk pengguna
-    public function userShow($id)
-    {
-        $reseller = Reseller::findOrFail($id); // Ambil reseller berdasarkan ID
-        return view('reseller.show', compact('reseller')); // Pastikan view ini ada
-    }
-
-    // Tampilkan daftar reseller
-    public function showResellers()
-    {
-        return view('reseller.index'); // Pastikan ini merujuk ke view yang benar
-    }
-    public function show($id)
-{
-    $reseller = Reseller::findOrFail($id);
-    return view('admin.resellers.show', compact('reseller'));
 }
 
-}

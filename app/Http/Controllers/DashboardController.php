@@ -2,7 +2,7 @@
     namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\Products;
-use App\Models\Reseller; // Impor model Reseller
+use App\Models\Reseller; 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,9 +18,17 @@ class DashboardController extends Controller
     
     public function admin()
     {
-        // Mengambil semua produk dari database
-        $products = Products::with('category')->get(); // Mengambil produk beserta kategorinya
-        $resellers = Reseller::all(); // Mengambil semua reseller
-        return view('admin.dashboard', compact('products', 'resellers')); // Mengirim produk dan reseller ke view
-    }
+        $products = Products::with('category')->get();
+         $resellers = Reseller::all();
+         $categories = Categories::all(); 
+         return view('admin.dashboard', compact('products', 'resellers', 'categories'));
+     }
+    public function dashboard()
+     {
+         $categories = Categories::all();
+         $products = Products::with('category')->get();
+         $resellers = Reseller::all();
+
+         return view('admin.dashboard', compact('categories', 'products', 'resellers'));
+     }
 }

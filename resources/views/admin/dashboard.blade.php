@@ -1,130 +1,143 @@
-@extends('layouts.app') <!-- Pastikan Anda memiliki layout utama -->
+@extends('layouts.admin')
+
 @section('content')
-<head>
-    @include('components.head')
-</head>
-<body>
-    @include('admin.navbar')
-    <div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="mb-4">Admin Dashboard</h2>
+<div class="container mt-5">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary font-weight-bold">Admin Dashboard</h1>
+        <p class="lead text-muted">Selamat datang, Admin! Pilih tindakan yang ingin Anda lakukan:</p>
+    </div>
 
-                <!-- Pesan Sukses -->
-                @if(session('success'))
-                    <script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: "{{ session('success') }}",
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-                    </script>
-                @endif
+    <!-- Tombol Logout -->
+    <div class="d-flex justify-content-end mb-4">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-danger shadow-lg px-4 py-2" type="submit">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </form>
+    </div>
 
-                <div class="mb-3">
-                    <a href="{{ route('product.create') }}" class="btn btn-success me-2">
-                        <i class="bi bi-plus-circle"></i> Create
-                    </a>
+    <!-- Section Cards -->
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <!-- Card Reseller -->
+        <div class="col">
+            <div class="card custom-card shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-4x text-primary mb-3"></i>
+                    <h5 class="card-title text-dark font-weight-bold">Kelola Reseller</h5>
+                    <p class="card-text text-muted">Tambahkan, ubah, atau hapus data reseller di sini.</p>
+                    <a href="{{ route('admin.resellers.index') }}" class="btn custom-btn btn-primary">Pergi ke Reseller</a>
                 </div>
+            </div>
+        </div>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Nama Produk</th>
-                                <th>Deskripsi</th>
-                                <th>Gambar</th>
-                                <th>Kategori</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($products as $product)
-                                <tr>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ Str::limit($product->description, 50) }}</td>
-                                    <td>
-                                        @if($product->image)
-                                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100">
-                                        @else
-                                            N/A
-                                        @endif
-                                    </td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>
-                                    <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Delete</button>
-                                        </form>
-
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">Tidak ada produk ditemukan.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+        <!-- Card Product -->
+        <div class="col">
+            <div class="card custom-card shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-cogs fa-4x text-success mb-3"></i>
+                    <h5 class="card-title text-dark font-weight-bold">Kelola Produk</h5>
+                    <p class="card-text text-muted">Kelola daftar produk, menambah, mengedit, atau menghapus produk.</p>
+                    <a href="{{ route('admin.products.index') }}" class="btn custom-btn btn-success">Pergi ke Produk</a>
                 </div>
-                <!-- Daftar Reseller -->
-                <h2 class="mt-5">Daftar Partners</h2>
-
-                <div class="mb-3">
-                    <a href="{{ route('resellers.create') }}" class="btn btn-success me-2">
-                        <i class="bi bi-plus-circle"></i> Create
-                    </a>
-                </div>
-
-                <table class="table mt-4">
-    <thead>
-        <tr>
-            <th>Nama</th>
-            <th>Provinsi</th>
-            <th>Kota</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if($resellers->isEmpty())
-            <tr>
-                <td colspan="4" class="text-center">Tidak ada rekanan ditemukan.</td>
-            </tr>
-        @else
-            @foreach ($resellers as $reseller)
-                <tr>
-                    <td>{{ $reseller->name }}</td>
-                    <td>{{ $reseller->province }}</td>
-                    <td>{{ $reseller->city }}</td>
-                    <td>
-                        <!-- Tombol Detail -->
-                        <a href="{{ route('admin.resellers.show', $reseller->id) }}" class="btn btn-info btn-sm">Detail</a>
-
-                        <!-- Tombol Edit -->
-                        <a href="{{ route('resellers.edit', $reseller->id) }}" class="btn btn-warning btn-sm">Edit</a>
-
-                        <!-- Tombol Hapus -->
-                        <form action="{{ route('resellers.destroy', $reseller->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus reseller ini?');" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        @endif
-    </tbody>
-</table>
             </div>
         </div>
     </div>
+</div>
 
+<!-- Styling CSS -->
+<style>
+    /* Layout untuk container */
+    .container {
+        max-width: 900px;
+    }
 
-    <!-- Skrip SweetAlert sudah diikutsertakan di layout atau head -->
-</body>
+    /* Styling untuk Card */
+    .card {
+        border-radius: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Styling Card */
+    .custom-card {
+        background-color: #ffffff;
+    }
+
+    .card-body {
+        padding: 30px;
+        background-color: #f9f9f9;
+    }
+
+    /* Teks pada Card */
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* Tombol */
+    .custom-btn {
+        font-size: 1.1rem;
+        padding: 12px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        width: 100%;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    /* Tombol Warna */
+    .btn-primary {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        border: none;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #0056b3, #004494);
+    }
+
+    .btn-success {
+        background: linear-gradient(45deg, #28a745, #218838);
+        border: none;
+        color: #fff;
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(45deg, #218838, #1e7e34);
+    }
+
+    .btn-danger {
+        background: linear-gradient(45deg, #dc3545, #c82333);
+        border: none;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background: linear-gradient(45deg, #c82333, #bd2130);
+    }
+
+    /* Responsif */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 20px;
+        }
+
+        .custom-btn {
+            font-size: 1rem;
+        }
+    }
+</style>
 @endsection
