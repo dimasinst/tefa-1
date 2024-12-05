@@ -66,7 +66,7 @@ class ResellerController extends Controller
         $reseller = Reseller::findOrFail($id);
 
         // Admin bisa melihat semua reseller
-        return view('resellers.show', compact('reseller'));
+        return view('admin.resellers.show', compact('reseller'));
     }
 
     // Mengapprove reseller
@@ -92,7 +92,7 @@ class ResellerController extends Controller
     public function editAdmin($id)
     {
         $reseller = Reseller::findOrFail($id);
-        return view('resellers.edit', compact('reseller'));
+        return view('admin.resellers.edit', compact('reseller'));
     }
 
     // Method untuk Update reseller oleh admin

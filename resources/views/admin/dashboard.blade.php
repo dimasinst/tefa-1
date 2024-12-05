@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <!-- Header -->
     <div class="text-center mb-5">
-        <h1 class="display-4 text-primary font-weight-bold">Admin Dashboard</h1>
+        <h1 class="display-4 text-primary font-weight-bold" style="font-family: 'Poppins', sans-serif;">Admin Dashboard</h1>
         <p class="lead text-muted">Selamat datang, Admin! Pilih tindakan yang ingin Anda lakukan:</p>
     </div>
 
@@ -12,7 +12,7 @@
     <div class="d-flex justify-content-end mb-4">
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button class="btn btn-danger shadow-lg px-4 py-2" type="submit">
+            <button class="btn btn-danger shadow-lg px-4 py-2" type="submit" style="transition: all 0.3s ease;">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
         </form>
@@ -22,7 +22,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <!-- Card Reseller -->
         <div class="col">
-            <div class="card custom-card shadow">
+            <div class="card custom-card shadow rounded-4">
                 <div class="card-body text-center">
                     <i class="fas fa-users fa-4x text-primary mb-3"></i>
                     <h5 class="card-title text-dark font-weight-bold">Kelola Reseller</h5>
@@ -34,7 +34,7 @@
 
         <!-- Card Product -->
         <div class="col">
-            <div class="card custom-card shadow">
+            <div class="card custom-card shadow rounded-4">
                 <div class="card-body text-center">
                     <i class="fas fa-cogs fa-4x text-success mb-3"></i>
                     <h5 class="card-title text-dark font-weight-bold">Kelola Produk</h5>
@@ -44,13 +44,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Card Testimoni -->
+    <div class="col mt-4">
+        <div class="card custom-card shadow rounded-4">
+            <div class="card-body text-center">
+                <i class="fas fa-comments fa-4x text-info mb-3"></i>
+                <h5 class="card-title text-dark font-weight-bold">Kelola Testimoni</h5>
+                <p class="card-text text-muted">Tambahkan, ubah, atau hapus testimoni pelanggan di sini.</p>
+                <a href="{{ route('admin.testimoni.index') }}" class="btn custom-btn btn-info">Pergi ke Testimoni</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Styling CSS -->
 <style>
     /* Layout untuk container */
     .container {
-        max-width: 900px;
+        max-width: 1100px;
     }
 
     /* Styling untuk Card */
@@ -62,7 +75,7 @@
 
     .card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
     /* Styling Card */
@@ -71,13 +84,13 @@
     }
 
     .card-body {
-        padding: 30px;
+        padding: 40px;
         background-color: #f9f9f9;
     }
 
     /* Teks pada Card */
     .card-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
         color: #343a40;
     }
@@ -89,13 +102,19 @@
 
     /* Tombol */
     .custom-btn {
-        font-size: 1.1rem;
-        padding: 12px;
+        font-size: 1.2rem;
+        padding: 15px;
         text-transform: uppercase;
         border-radius: 50px;
         width: 100%;
         font-weight: 600;
         letter-spacing: 1px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
     /* Tombol Warna */
@@ -132,7 +151,7 @@
     /* Responsif */
     @media (max-width: 768px) {
         .card-body {
-            padding: 20px;
+            padding: 30px;
         }
 
         .custom-btn {

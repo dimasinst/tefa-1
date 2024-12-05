@@ -102,7 +102,14 @@
 
 <body>
     <div class="container">
+        
         <h2>Tambah Produk Baru</h2>
+        <div class="d-flex justify-content-start mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-dark btn-lg">
+            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+        </a>
+    </div>
+
 
         {{-- Menampilkan alert sukses --}}
         @if(session('success'))
@@ -181,13 +188,13 @@
                 </select>
             </div>
 
-         
-
             <div class="d-grid">
                 <button type="submit" class="btn">
                     <i class="fas fa-save me-2"></i> Simpan Produk
                 </button>
             </div>
+
+           
         </form>
     </div>
 

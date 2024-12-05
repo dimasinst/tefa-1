@@ -82,6 +82,12 @@
 <body>
 <div class="container mt-5 pt-4">
     <h2 class="section-header">Edit Produk</h2>
+    <div class="d-flex justify-content-start mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-dark btn-lg">
+            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+        </a>
+    </div>
+
 
     <!-- Pesan Sukses -->
     @if(session('success'))
@@ -179,5 +185,6 @@
 
         <button type="submit" class="btn btn-primary w-100">Update Produk</button>
     </form>
+    
 </div>
 </body>

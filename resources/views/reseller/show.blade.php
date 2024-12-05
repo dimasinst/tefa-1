@@ -30,10 +30,6 @@
                     <td>{{ $reseller->alamat }}</td>
                 </tr>
                 <tr>
-                    <td>Kode Pos</td>
-                    <td>{{ $reseller->kodepos }}</td>
-                </tr>
-                <tr>
                     <td>Telepon</td>
                     <td>
                         <a href="https://wa.me/{{ $reseller->phone }}" target="_blank" class="detail-link">{{ $reseller->phone }}</a>

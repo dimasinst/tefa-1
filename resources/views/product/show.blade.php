@@ -48,8 +48,6 @@
             line-height: 1.6;
         }
 
-      
-
         .navbar {
             position: relative;
             bottom: 0;
@@ -154,8 +152,6 @@
 <body>
     @include('components.navbar')
 
-   
-
     <!-- Detail Produk Utama -->
     <div class="container mt-5 content">
         <div class="card p-4">
@@ -199,7 +195,7 @@
                                 <td><strong>deskripsi</strong></td>
                                 <td>{{$products->description}}</td>
                             </tr>
-                        @else
+                            @else
                             <tr>
                                 <td><strong>WIRE :</strong></td>
                                 <td>{{ $products->wire }}</td>
@@ -229,21 +225,34 @@
                     </table>
                 </div>
 
-
-                    <!-- Back Button Below Specifications -->
-                    <div class="back-button">
-    <a href="{{ url()->previous() }}" class="btn btn-back">Kembali</a>
-</div>
-
-<!-- Informasi Reseller -->
-<div class="text-center mt-4">
-    <p>Jika Anda tertarik untuk membeli, silakan hubungi Rekanan terdekat kami.</p>
-    <a href="{{ route('reseller.index') }}" class="btn btn-primary">
-        Hubungi Rekanan Kami
-    </a>
-</div>
-
+                <!-- Back Button Below Specifications -->
+                <div class="back-button">
+                    <a href="{{ url()->previous() }}" class="btn btn-back">Kembali</a>
                 </div>
+
+                <!-- Informasi Reseller -->
+                <div class="text-center mt-4">
+                    <p>Jika Anda tertarik untuk membeli, silakan hubungi Rekanan terdekat kami.</p>
+                    <a href="{{ route('reseller.index') }}" class="btn btn-primary">
+                        Hubungi Rekanan Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Foto Pemasangan -->
+    <div class="container mt-5">
+        <h3 class="text-center">CARA PEMASANGAN</h3>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <img src="{{ asset('image/step1.jpeg') }}" class="img-fluid" alt="Pemasangan 1">
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('image/step2.jpeg') }}" class="img-fluid" alt="Pemasangan 2">
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('image/step3.jpeg') }}" class="img-fluid" alt="Pemasangan 3">
             </div>
         </div>
     </div>
@@ -253,27 +262,25 @@
         <h2>Produk Lain di Kategori yang Sama</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4" id="product-list">
             @foreach ($relatedProducts as $product)
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="row g-0 align-items-center">
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
-                                    <a href="{{ route('detail', $product->id) }}" class="btn">Selengkapnya</a>
-                                </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                                <a href="{{ route('detail', $product->id) }}" class="btn">Selengkapnya</a>
                             </div>
-                            <div class="col-4">
-                                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
-                            </div>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
 
-   
-        @include('components.footer')
-    
+    @include('components.footer')
 </body>

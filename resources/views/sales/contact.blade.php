@@ -131,7 +131,7 @@
 
     <!-- Form Reseller -->
     <div class="form-wrapper">
-        <h3 class="text-center">Ajukan Menjadi Reseller</h3>
+        <h3 class="text-center">Ajukan Menjadi Rekanan</h3>
         <form action="{{ route('resellers.store') }}" method="POST">
             @csrf
             <div class="mb-3">
@@ -155,9 +155,10 @@
                 <input type="text" id="instagram" name="instagram" class="form-control" placeholder="Masukkan akun Instagram" required>
             </div>
             <div class="mb-3">
-                <label for="alamat" class="form-label">Alamat Lengkap</label>
-                <input type="text" id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat lengkap" required>
-            </div>
+  <label for="alamat" class="form-label">Alamat Lengkap</label>
+  <textarea id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat lengkap" rows="4" required></textarea>
+</div>
+
             <button type="submit" class="btn">Ajukan</button>
         </form>
     </div>

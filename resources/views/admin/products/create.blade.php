@@ -4,7 +4,6 @@
 <head>
     @include('components.head')
     <style>
-        /* Styling untuk tampilan halaman */
         body {
             background-color: #f4f6f9;
             font-family: 'Arial', sans-serif;
@@ -45,9 +44,8 @@
             margin-bottom: 1rem;
         }
 
-        /* Warna tombol menggunakan btn-primary */
         .btn {
-            background: linear-gradient(135deg, #ff5e5e, #ff9f1c); /* Red to orange gradient */
+            background: linear-gradient(135deg, #ff5e5e, #ff9f1c);
             color: white;
             border: none;
             padding: 8px 18px;
@@ -57,19 +55,18 @@
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #ff9f1c, #ff5e5e); /* Reversed gradient for hover */
+            background: linear-gradient(135deg, #ff9f1c, #ff5e5e);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .btn i {
-            font-size: 16px;
+        .btn-back {
+            background: linear-gradient(135deg, #2c3e50, #4e73df);
         }
 
-        .d-grid {
-            margin-top: 20px;
+        .btn-back:hover {
+            background: linear-gradient(135deg, #4e73df, #2c3e50);
         }
 
-        /* Untuk mengatur tampilan gambar preview */
         .img-preview {
             max-width: 80%;
             height: auto;
@@ -77,7 +74,6 @@
             display: none;
         }
 
-        /* Menambahkan responsivitas */
         @media (max-width: 768px) {
             .container {
                 margin-top: 20px;
@@ -94,7 +90,7 @@
             }
 
             .img-preview {
-                max-width: 100%; /* Adjust image preview size for smaller screens */
+                max-width: 100%;
             }
         }
     </style>
@@ -103,6 +99,12 @@
 <body>
     <div class="container">
         <h2>Tambah Produk Baru</h2>
+        <div class="d-flex justify-content-start mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-dark btn-lg">
+            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+        </a>
+    </div>
+
 
         {{-- Menampilkan alert sukses --}}
         @if(session('success'))
@@ -183,6 +185,9 @@
                 </select>
             </div>
 
+
+
+            {{-- Tombol Simpan --}}
             <div class="d-grid">
                 <button type="submit" class="btn">
                     <i class="fas fa-save me-2"></i> Simpan Produk
@@ -192,7 +197,6 @@
     </div>
 
     <script>
-        // Preview gambar jika diperlukan
         function previewImage(event) {
             const output = document.getElementById('image-preview');
             output.style.display = 'block';
@@ -201,4 +205,3 @@
     </script>
 </body>
 @endsection
-

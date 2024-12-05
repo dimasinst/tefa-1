@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container mt-5">
+    <div class="d-flex justify-content-start mb-4">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-dark btn-lg">
+            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+        </a>
+    </div>
+
         <h3>Daftar Reseller</h3>
 
         @if(session('success'))
@@ -27,7 +33,7 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $reseller->name }}</td>
                             <td>
-                                <span class="badge badge-warning">Pending</span>
+                                <span class="">Pending</span>
                             </td>
                             <td>
                                 <form action="{{ route('admin.resellers.approve', $reseller->id) }}" method="POST" style="display:inline;">
@@ -38,6 +44,8 @@
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Reject</button>
                                 </form>
+                                <a href="{{ route('admin.resellers.show', $reseller->id) }}" class="btn btn-warning btn-sm  px-4 py-2">Detail</a>
+
                             </td>
                         </tr>
                     @endif
@@ -62,7 +70,7 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $reseller->name }}</td>
                             <td>
-                                <span class="badge badge-success">Approved</span>
+                                <span class="">Approved</span>
                             </td>
                             <td>
                                 <a href="{{ route('admin.resellers.edit', $reseller->id) }}" class="btn btn-primary">Edit</a>
@@ -71,6 +79,8 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
+                                <a href="{{ route('admin.resellers.show', $reseller->id) }}" class="btn btn-warning btn-sm  px-4 py-2">Detail</a>
+
                             </td>
                         </tr>
                     @endif

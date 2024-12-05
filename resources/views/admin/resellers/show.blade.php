@@ -30,10 +30,6 @@
                     <td>{{ $reseller->alamat }}</td>
                 </tr>
                 <tr>
-                    <td>Kode Pos</td>
-                    <td>{{ $reseller->kodepos }}</td>
-                </tr>
-                <tr>
                     <td>Telepon</td>
                     <td>
                         <a href="https://wa.me/{{ $reseller->phone }}" target="_blank" class="detail-link">{{ $reseller->phone }}</a>
@@ -48,8 +44,7 @@
             </tbody>
         </table>
         <div class="text-center mt-4">
-            <a href="{{ route('admin.dashboard') }}" class="btn btn">Kembali</a>
-        </div>
+            <a href="{{ route('admin.resellers.index') }}" class="btn btn">Kembali</a>
     </div>
 </div>
 @endsection
