@@ -94,11 +94,11 @@
                         {{ session('failed') }}
                     </div>
                     @endif
-                    <form action="{{ route('login.authenticate') }}" method="POST">
+                    <form action="{{ route('auth.authenticate') }}" method="POST">
                         @csrf
                         <div class="mb-4">
                             <label for="USN" class="form-label">Username</label>
-                            <input type="text" name="USN" class="form-control" id="USN" placeholder="Masukkan Username Anda">
+                            <input type="text" name="USN" class="form-control" id="USN" placeholder="Masukkan Username Anda" >
                             @error('USN')
                             <small class="text-danger">Username Anda tidak boleh kosong</small>
                             @enderror
@@ -106,7 +106,7 @@
 
                         <div class="mb-4">
                             <label for="password" class="form-label">Kata Sandi</label>
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan kata sandi Anda">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan kata sandi Anda" >
                             @error('password')
                             <small class="text-danger">Password Anda tidak boleh kosong</small>
                             @enderror

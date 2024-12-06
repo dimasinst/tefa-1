@@ -33,7 +33,6 @@
 
         .card-img-top {
             height: 400px;
-            object-fit: cover;
         }
 
         .content {
@@ -146,6 +145,62 @@
                 margin-bottom: 15px;
             }
         }
+     /* Memastikan tombol navigasi tidak tertutup latar belakang di mobile dan desktop */
+#relatedProductsCarouselMobile .carousel-control-prev,
+#relatedProductsCarouselMobile .carousel-control-next,
+#relatedProductsCarousel .carousel-control-prev,
+#relatedProductsCarousel .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    border-radius: 50%; /* Membuat tombol menjadi bulat */
+    width: 40px; /* Lebar tombol */
+    height: 40px; /* Tinggi tombol */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Memastikan tombol berada di atas konten */
+    position: absolute; /* Menempatkan tombol di atas carousel */
+}
+
+/* Posisi tombol di bawah card pada mobile */
+#relatedProductsCarouselMobile .carousel-control-prev,
+#relatedProductsCarouselMobile .carousel-control-next {
+    bottom: 10px; /* Memberikan jarak dari bawah */
+}
+
+/* Tombol kiri di mobile */
+#relatedProductsCarouselMobile .carousel-control-prev {
+    left: 10px; /* Memberikan jarak dari kiri */
+}
+
+/* Tombol kanan di mobile */
+#relatedProductsCarouselMobile .carousel-control-next {
+    right: 10px; /* Memberikan jarak dari kanan */
+}
+
+/* Posisi tombol di bawah card pada desktop */
+#relatedProductsCarousel .carousel-control-prev,
+#relatedProductsCarousel .carousel-control-next {
+    bottom: 10px; /* Memberikan jarak dari bawah */
+}
+
+/* Tombol kiri di desktop */
+#relatedProductsCarousel .carousel-control-prev {
+    left: 10px; /* Memberikan jarak dari kiri */
+}
+
+/* Tombol kanan di desktop */
+#relatedProductsCarousel .carousel-control-next {
+    right: 10px; /* Memberikan jarak dari kanan */
+}
+
+/* Menyembunyikan tombol di mobile */
+@media (min-width: 768px) {
+    #relatedProductsCarouselMobile .carousel-control-prev,
+    #relatedProductsCarouselMobile .carousel-control-next {
+        display: none; /* Menyembunyikan tombol navigasi di mobile */
+    }
+}
+
     </style>
 </head>
 
@@ -258,29 +313,92 @@
     </div>
 
     <!-- Produk Lain di Kategori yang Sama -->
-    <div class="container py-5 mt-5">
-        <h2>Produk Lain di Kategori yang Sama</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="product-list">
-            @foreach ($relatedProducts as $product)
-            <div class="col">
-                <div class="card h-100">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
-                                <a href="{{ route('detail', $product->id) }}" class="btn">Selengkapnya</a>
+ <!-- Produk Lain di Kategori yang Sama -->
+<div class="container py-5 mt-5">
+    <h2>Produk Lain di Kategori yang Sama</h2>
+
+    <!-- Carousel untuk Mobile (1 produk per slide) -->
+    <div id="relatedProductsCarouselMobile" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($relatedProducts->chunk(1) as $chunk) <!-- 1 produk per chunk -->
+                <div class="carousel-item @if($loop->first) active @endif">
+                    <div class="row">
+                        @foreach ($chunk as $product)
+                            <div class="col-12"> <!-- Satu produk per slide -->
+                                <div class="card h-100">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $product->name }}</h5>
+                                                <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                                                <a href="{{ route('detail', $product->id) }}" class="btn">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
+        <!-- Kontrol Carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#relatedProductsCarouselMobile" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#relatedProductsCarouselMobile" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+
+    <!-- Grid untuk Desktop (4 produk per slide) -->
+    <div class="carousel slide d-none d-md-block" id="relatedProductsCarousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($relatedProducts->chunk(4) as $chunk)
+                <div class="carousel-item @if($loop->first) active @endif">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        @foreach ($chunk as $product)
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="row g-0 align-items-center">
+                                        <div class="col-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $product->name }}</h5>
+                                                <p class="card-text">{{ Str::limit($product->description, 100) }}</p>
+                                                <a href="{{ route('detail', $product->id) }}" class="btn">Selengkapnya</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <!-- Kontrol Carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</div>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
 
     @include('components.footer')
 </body>

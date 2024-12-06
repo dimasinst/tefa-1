@@ -38,6 +38,25 @@
     </table>
 </div>
 
+<div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item {{ $resellers->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $resellers->previousPageUrl() }}">&laquo; Previous</a>
+                </li>
+                @for ($i = 1; $i <= $resellers->lastPage(); $i++)
+                    <li class="page-item {{ $resellers->currentPage() == $i ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $resellers->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+                <li class="page-item {{ $resellers->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $resellers->nextPageUrl() }}">Next &raquo;</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
 <script>
     function searchResellers() {
         const input = document.getElementById('searchInput').value.toLowerCase();

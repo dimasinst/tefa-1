@@ -35,7 +35,7 @@ class ResellerController extends Controller
     public function indexUser()
     {
         // Mengambil reseller yang hanya disetujui untuk user
-        $resellers = Reseller::where('status', 'approved')->get();
+        $resellers = Reseller::where('status', 'approved')->paginate(10);
         return view('reseller.index', compact('resellers'));
     }
 
@@ -43,7 +43,7 @@ class ResellerController extends Controller
     public function indexAdmin()
     {
         // Mengambil semua reseller untuk admin
-        $resellers = Reseller::all();
+        $resellers = Reseller::paginate(10);  // Menampilkan 10 reseller per halaman
         return view('admin.resellers.index', compact('resellers'));
     }
 

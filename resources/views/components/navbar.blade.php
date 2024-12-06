@@ -25,7 +25,7 @@
                     <a class="nav-link" href="{{ route('reseller.index') }}">Partners</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('other.index') }}">Other</a>
+                    <a class="nav-link" href="{{ route('other.index') }}">Article</a>
                 </li>
             </ul>
         </div>

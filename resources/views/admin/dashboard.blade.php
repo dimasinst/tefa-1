@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-5">
+<div class="container">
     <!-- Header -->
-    <div class="text-center mb-5">
+    <div class="text-center">
         <h1 class="display-4 text-primary font-weight-bold" style="font-family: 'Poppins', sans-serif;">Admin Dashboard</h1>
         <p class="lead text-muted">Selamat datang, Admin! Pilih tindakan yang ingin Anda lakukan:</p>
     </div>
@@ -26,7 +26,6 @@
                 <div class="card-body text-center">
                     <i class="fas fa-users fa-4x text-primary mb-3"></i>
                     <h5 class="card-title text-dark font-weight-bold">Kelola Reseller</h5>
-                    <p class="card-text text-muted">Tambahkan, ubah, atau hapus data reseller di sini.</p>
                     <a href="{{ route('admin.resellers.index') }}" class="btn custom-btn btn-primary">Pergi ke Reseller</a>
                 </div>
             </div>
@@ -38,7 +37,6 @@
                 <div class="card-body text-center">
                     <i class="fas fa-cogs fa-4x text-success mb-3"></i>
                     <h5 class="card-title text-dark font-weight-bold">Kelola Produk</h5>
-                    <p class="card-text text-muted">Kelola daftar produk, menambah, mengedit, atau menghapus produk.</p>
                     <a href="{{ route('admin.products.index') }}" class="btn custom-btn btn-success">Pergi ke Produk</a>
                 </div>
             </div>
@@ -51,7 +49,6 @@
             <div class="card-body text-center">
                 <i class="fas fa-comments fa-4x text-info mb-3"></i>
                 <h5 class="card-title text-dark font-weight-bold">Kelola Testimoni</h5>
-                <p class="card-text text-muted">Tambahkan, ubah, atau hapus testimoni pelanggan di sini.</p>
                 <a href="{{ route('admin.testimoni.index') }}" class="btn custom-btn btn-info">Pergi ke Testimoni</a>
             </div>
         </div>
@@ -95,11 +92,7 @@
         color: #343a40;
     }
 
-    .card-text {
-        font-size: 1rem;
-        color: #6c757d;
-    }
-
+    
     /* Tombol */
     .custom-btn {
         font-size: 1.2rem;

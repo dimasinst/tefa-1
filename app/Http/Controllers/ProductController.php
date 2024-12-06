@@ -9,16 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
-    {
-         $categories = Categories::all(); 
-        return view('index', compact('categories')); 
-
-    }
+ 
     public function indexAdmin()
 {
     // Ambil semua produk yang ada di database
-    $products = Products::all(); 
+    $products = Products::paginate(10);
+    // $products = Products::select('name')->get(); 
+
     
     // Menampilkan view untuk admin dengan data produk
     return view('admin.products.index', compact('products'));
@@ -34,25 +31,26 @@ class ProductController extends Controller
 
 public function cvt()
 {
-    $products = products::where('category_id', 1)->get(); 
+    $products = products::where('category_id', 1)->paginate(5);
     return view('categories.cvt', compact('products'));
 }
 
 public function valve()
 {
-    $products = Products::where('category_id', 2)->get(); 
+    $products = Products::where('category_id', 2)->paginate(5);
     return view('categories.valve', compact('products'));
 }
 
 public function clutch()
 {
-    $products = Products::where('category_id', 3)->get(); 
+    $products = Products::where('category_id', 3)->paginate(5);
     return view('categories.clutch', compact('products'));
 }
 
 public function sentri()
 {
-    $products = Products::where('category_id', 4)->get(); 
+    $products = Products::where('category_id', 4)->paginate(5);
+
     return view('categories.sentri', compact('products'));
 
 }   

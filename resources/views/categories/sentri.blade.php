@@ -165,6 +165,23 @@
         
         <p class="text-center mt-3 no-results-message">Tidak ada produk ditemukan.</p>
     </div>
+  <div class="d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item {{ $products->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $products->previousPageUrl() }}">&laquo; Previous</a>
+                </li>
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <li class="page-item {{ $products->currentPage() == $i ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+                <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $products->nextPageUrl() }}">Next &raquo;</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
     <footer>
         @include('components.footer')
