@@ -22,7 +22,7 @@ Route::get('/', [ProductController::class, 'index'])->name('index');
 Route::get('/home', fn() => redirect()->route('index'))->name('home');
 
 // Rute lainnya
-Route::get('/inquery', fn() => view('sales.contact'))->name('sales.contact');
+Route::get('/inquery', [ResellerController::class, 'showContactForm'])->name('sales.contact');
 Route::get('/artikel', [TestimonialController::class, 'userIndex'])->name('other.index');
 
 // Rute untuk kategori produk
@@ -62,6 +62,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::delete('/{id}', [ResellerController::class, 'destroyAdmin'])->name('admin.resellers.delete');
         Route::post('/{reseller}/approve', [ResellerController::class, 'approve'])->name('admin.resellers.approve');
         Route::post('/{reseller}/reject', [ResellerController::class, 'reject'])->name('admin.resellers.reject');
+        Route::get('/admin/resellers/pending', [ResellerController::class, 'pending'])->name('admin.resellers.pending');
     });
 
     // Rute untuk produk

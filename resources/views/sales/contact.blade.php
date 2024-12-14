@@ -143,9 +143,15 @@
                 <input type="text" id="phone" name="phone" class="form-control" placeholder="Masukkan nomor telepon" required>
             </div>
             <div class="mb-3">
-                <label for="province" class="form-label">Provinsi</label>
-                <input type="text" id="province" name="province" class="form-control" placeholder="Masukkan provinsi" required>
-            </div>
+    <label for="province" class="form-label">Provinsi</label>
+    <select id="province" name="province" class="form-control" required>
+    <option value="" disabled selected>Pilih Provinsi</option>
+    @foreach($provinces as $province)
+        <option value="{{ $province->province }}">{{ $province->province }}</option>
+    @endforeach
+</select>
+</div>
+
             <div class="mb-3">
                 <label for="city" class="form-label">Kota</label>
                 <input type="text" id="city" name="city" class="form-control" placeholder="Masukkan kota" required>

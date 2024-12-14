@@ -18,11 +18,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        View::composer('components.footer', function ($view) {
-            $profile = Profile::first();  // Ambil data profile
-            $view->with('profile', $profile);  // Kirim data ke tampilan footer
-        });
-    }
+    // public function boot(): void
+    // {
+    //     View::composer('components.footer', function ($view) {
+    //         $profile = Profile::first();  // Ambil data profile
+    //         $view->with('profile', $profile);  // Kirim data ke tampilan footer
+    //     });
+    // }
 }

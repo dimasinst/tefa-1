@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ResellerController extends Controller
 {
+
+    public function showContactForm()
+    {
+        // Ambil data provinsi unik dari tabel resellers
+        $provinces = Reseller::select('province')->distinct()->get();
+    
+        // Kirim data provinsi ke view
+        return view('sales.contact', compact('provinces'));
+    }
     // Menyimpan data reseller
     public function store(Request $request)
     {
@@ -45,8 +54,10 @@ class ResellerController extends Controller
     public function indexAdmin()
     {
         // Mengambil semua reseller untuk admin
-        $resellers = Reseller::paginate(10);  // Menampilkan 10 reseller per halaman
-        return view('admin.resellers.index', compact('resellers'));
+        $resellers = Reseller::where('status', 'approved')->paginate(10);
+    $pendingCount = Reseller::where('status', 'pending')->count();
+
+    return view('admin.resellers.index', compact('resellers', 'pendingCount'));
     }
 
     // Untuk User melihat detail reseller
@@ -82,6 +93,13 @@ class ResellerController extends Controller
         return redirect()->route('admin.resellers.index')->with('success', 'Reseller approved!');
     }
 
+    public function pending()
+    {
+        $resellers = Reseller::where('status', 'pending')->paginate(10);
+    
+        return view('admin.resellers.pending', compact('resellers'));
+    }
+    
     // Menolak reseller
     public function reject($id)
     {
@@ -89,7 +107,7 @@ class ResellerController extends Controller
         $reseller->status = 'rejected';
         $reseller->save();
 
-        return redirect()->route('admin.resellers.index')->with('error', 'Reseller rejected!');
+        return redirect()->route('admin.resellers.pending')->with('error', 'Reseller rejected!');
     }
 
     public function editAdmin($id)
