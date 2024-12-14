@@ -115,13 +115,13 @@
         <p>Untuk informasi lebih lanjut, hubungi kami melalui platform berikut.</p>
         <div class="contact-info">
             <div class="contact-item">
-                <a href="https://instagram.com/yourusername" target="_blank" class="text-decoration-none text-white">
+                <a href="https://www.instagram.com/mtnspring_japan.official/" target="_blank" class="text-decoration-none text-white">
                     <i class="bi bi-instagram"></i>
                     <p>Instagram</p>
                 </a>
             </div>
             <div class="contact-item">
-                <a href="mailto:your-email@example.com" class="text-decoration-none text-white">
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlFlmBKXRmqvwBrtWNqBzfMKFlzRxlCTbQZswpvtDHZGkrLsSKdnftDdmrzjnrgJwHFRjB" class="text-decoration-none text-white">
                     <i class="bi bi-envelope"></i>
                     <p>Email</p>
                 </a>
@@ -164,6 +164,7 @@
     </div>
 
     @include('components.footer')
+
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>

@@ -10,8 +10,8 @@
     <div class="footer">
         <!-- Social Media Icons Row -->
         <div class="icons">
-            <a href="mailto:info@example.com"><i class="fa fa-envelope"></i></a>
-            <a href="https://www.instagram.com/_zyomont/" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="{{ $profile->email }}"><i class="fa fa-envelope"></i></a>
+            <a href="{{ $profile->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
 
         <!-- Footer Navigation Links Row -->

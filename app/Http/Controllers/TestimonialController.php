@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use App\Models\profile;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -20,8 +21,9 @@ class TestimonialController extends Controller
     public function userIndex()
     {
         // Retrieve all testimonials
+        $profile = profile::all();
         $testimoni = Testimonial::all();
-        return view('other.index', compact('testimoni'));
+        return view('other.index', compact('testimoni','profile'));
     }
 
     // Menampilkan form tambah testimoni
@@ -36,15 +38,15 @@ class TestimonialController extends Controller
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-    
+
         // Upload file
         $imagePath = $request->file('image')->store('testimonials', 'public');
-    
+
         // Simpan ke database
         Testimonial::create([
             'image' => $imagePath,
         ]);
-    
+
         return redirect()->route('admin.testimoni.index')->with('success', 'Testimoni berhasil ditambahkan!');
     }
 

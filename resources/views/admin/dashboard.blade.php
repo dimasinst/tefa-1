@@ -54,6 +54,17 @@
         </div>
     </div>
 
+    <div class="col mt-4">
+        <div class="card custom-card shadow rounded-4">
+            <div class="card-body text-center">
+                <i class="fas fa-comments fa-4x text-info mb-3"></i>
+                <h5 class="card-title text-dark font-weight-bold">Kelola profile</h5>
+                <a href="{{ route('admin.profile.index') }}" class="btn custom-btn btn-info">Pergi ke profile</a>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 <!-- Styling CSS -->
@@ -92,7 +103,7 @@
         color: #343a40;
     }
 
-    
+
     /* Tombol */
     .custom-btn {
         font-size: 1.2rem;

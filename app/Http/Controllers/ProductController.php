@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\categories;
 use App\Models\Products;
+use App\Models\profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
- 
+    public function index()
+    {
+        $profile = Profile::first();
+        return view('index', compact('profile') );
+    }
+
     public function indexAdmin()
 {
     // Ambil semua produk yang ada di database
     $products = Products::paginate(10);
-    // $products = Products::select('name')->get(); 
+    // $products = Products::select('name')->get();
 
-    
+
     // Menampilkan view untuk admin dengan data produk
     return view('admin.products.index', compact('products'));
 }
@@ -31,45 +37,48 @@ class ProductController extends Controller
 
 public function cvt()
 {
+    $profile = profile::all();
     $products = products::where('category_id', 1)->paginate(5);
-    return view('categories.cvt', compact('products'));
+    return view('categories.cvt', compact('products','profile'));
 }
 
 public function valve()
 {
+    $profile = profile::all();
     $products = Products::where('category_id', 2)->paginate(5);
-    return view('categories.valve', compact('products'));
+    return view('categories.valve', compact('products','profile'));
 }
 
 public function clutch()
 {
+    $profile = profile::all();
     $products = Products::where('category_id', 3)->paginate(5);
-    return view('categories.clutch', compact('products'));
+    return view('categories.clutch', compact('products', 'profile'));
 }
 
 public function sentri()
 {
+    $profile = profile::all();
     $products = Products::where('category_id', 4)->paginate(5);
+    return view('categories.sentri', compact('products','profile'));
 
-    return view('categories.sentri', compact('products'));
-
-}   
+}
 public function showProduct($id)
 {
     $products = Products::find($id);
     $productDetail = Products::findOrFail($id);
-
+    $profile = profile::all();
     $relatedProducts = Products::where('category_id', $productDetail->category_id)
                             ->where('id', '!=', $id)
                             ->get();
 
-    return view('product.show', compact('productDetail', 'relatedProducts', 'products'));
+    return view('product.show', compact('productDetail', 'relatedProducts', 'products','profile'));
 }
 
     public function create(Request $request)
     {
         $categories = Categories::all();
-        $selectedCategoryId = $request->input('category_id'); 
+        $selectedCategoryId = $request->input('category_id');
         return view('admin.products.create', compact('categories', 'selectedCategoryId'));
     }
 
@@ -117,9 +126,9 @@ public function showProduct($id)
 
     public function edit($id)
         {
-            $product = Products::findOrFail($id);  
-            $categories = Categories::all(); 
-            return view('admin.products.edit', compact('product', 'categories')); 
+            $product = Products::findOrFail($id);
+            $categories = Categories::all();
+            return view('admin.products.edit', compact('product', 'categories'));
         }
 
 
@@ -229,12 +238,13 @@ public function showProduct($id)
 
     public function show($id)
     {
+        $profile = profile::all();
         $products = Products::findOrFail($id);
         $relatedProducts = Products::where('category_id', $products->category_id)
         ->where('id', '!=', $id)
         ->get();
-        return view('admin.products.show', compact('products', 'relatedProducts'));
+        return view('admin.products.show', compact('products', 'relatedProducts','profile'));
     }
-    
+
 
 }

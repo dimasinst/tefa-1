@@ -311,7 +311,7 @@
         <div class="about-content" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
             <h3>Tentang Kami</h3>
             <p>
-                <b>MTN Spring</b> adalah perusahaan lokal yang fokus pada pengembangan dan inovasi komponen spring untuk balapan. 
+                <b>MTN Spring</b> adalah perusahaan lokal yang fokus pada pengembangan dan inovasi komponen spring untuk balapan.
                 Kami menggunakan material terbaik yang diimpor dari Jepang, sehingga produk kami menawarkan performa maksimal dengan durabilitas tinggi.
             </p>
             <p>
@@ -367,10 +367,11 @@
 </section>
 
 
-    @include('components.footer')
+@includeWhen($profile, 'components.footer', ['profile' => $profile])
 
-  
-   
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({

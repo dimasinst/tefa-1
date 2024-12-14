@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reseller;
+use App\Models\profile;
 use Illuminate\Http\Request;
 
 class ResellerController extends Controller
@@ -34,9 +35,10 @@ class ResellerController extends Controller
     // Menampilkan daftar reseller di admin
     public function indexUser()
     {
+        $profile = profile::all();
         // Mengambil reseller yang hanya disetujui untuk user
         $resellers = Reseller::where('status', 'approved')->paginate(10);
-        return view('reseller.index', compact('resellers'));
+        return view('reseller.index', compact('resellers','profile'));
     }
 
     // Untuk Admin
@@ -50,6 +52,7 @@ class ResellerController extends Controller
     // Untuk User melihat detail reseller
     public function showUser($id)
     {
+        $profile = profile::all();
         $reseller = Reseller::findOrFail($id);
 
         // Pastikan reseller ini disetujui untuk user
@@ -57,7 +60,7 @@ class ResellerController extends Controller
             return redirect()->route('resellers.index')->with('error', 'This reseller is not available.');
         }
 
-        return view('reseller.show', compact('reseller'));
+        return view('reseller.show', compact('reseller','profile'));
     }
 
     // Untuk Admin melihat detail reseller
@@ -88,7 +91,7 @@ class ResellerController extends Controller
 
         return redirect()->route('admin.resellers.index')->with('error', 'Reseller rejected!');
     }
-    
+
     public function editAdmin($id)
     {
         $reseller = Reseller::findOrFail($id);
@@ -117,7 +120,7 @@ class ResellerController extends Controller
     public function destroyAdmin($id)
     {
         $reseller = Reseller::findOrFail($id);
-        
+
         // Hapus reseller
         $reseller->delete();
 

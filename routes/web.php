@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ProfileController;
 
 // Rute untuk login
 Route::middleware(['guest'])->group(function () {
@@ -32,6 +33,12 @@ Route::prefix('categories')->group(function () {
     Route::get('/sentri', [ProductController::class, 'sentri'])->name('categories.sentri');
     Route::get('product/show/{id}', [ProductController::class, 'showProduct'])->name('detail'); // Rute untuk detail produk
 
+});
+
+Route::prefix('profile')->group(function () {
+Route::get('/', [ProfileController::class, 'index'])->name('admin.profile.index');
+Route::get('/edit', [ProfileController::class, 'edit'])->name('admin.profile.edit');
+Route::post('/admin/edit', [ProfileController::class, 'update'])->name('admin.profile.update');
 });
 
 // Rute untuk user (reseller)

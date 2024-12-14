@@ -130,7 +130,7 @@
 <body>
     @include('components.navbar')
     @include('components.navproduct')
-    
+
     <div class="container">
         <div class="search-bar">
             <input type="search" id="search-input" placeholder="Cari Produk SENTRI">
@@ -139,7 +139,7 @@
 
         <img src="{{ asset('image/foto1.jpeg') }}" alt="SENTRI" class="img">
         <h2 class="text-center my-4">Produk SENTRI</h2>
-        
+
         <div class="row row-cols-1 row-cols-md-3 g-4" id="product-list">
             @foreach ($products as $product)
                 <div class="col">
@@ -153,16 +153,16 @@
                                 </div>
                             </div>
                             <div class="col-4">
-                                
+
                                     <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid card-img" alt="{{ $product->name }}">
-                              
+
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-        
+
         <p class="text-center mt-3 no-results-message">Tidak ada produk ditemukan.</p>
     </div>
   <div class="d-flex justify-content-center mt-4">
@@ -184,7 +184,7 @@
     </div>
 
     <footer>
-        @include('components.footer')
+        @includeWhen($profile, 'components.footer', ['profile' => $profile])
     </footer>
 
     <script>

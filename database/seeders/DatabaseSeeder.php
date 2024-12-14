@@ -9,6 +9,7 @@ use App\Models\categories;
 use Illuminate\Database\Seeder;
 use Database\Seeders\admin;
 use Database\Seeders\categorySeeder;
+use Database\Seeders\ProfileSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,7 +20,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $this->call([
             admin::class,
-            categorySeeder::class
+            categorySeeder::class,
+            ProfileSeeder::class
         ]);
     }
 }
