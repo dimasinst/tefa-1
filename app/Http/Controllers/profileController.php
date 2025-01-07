@@ -8,13 +8,13 @@ class profileController extends Controller
 {
     public function index()
 {
-    $profiles = profile::all(); // Ambil semua data profil
-    return view('admin.profile.index', compact('profiles'));
+    $profile = profile::all(); // Ambil semua data profil
+    return view('admin.profile.index', compact('profile'));
 }
 
 public function Footer()
 {
-    $profile = profile::first(); // Mengambil data profil pertama
+    $profile = profile::all(); // Mengambil data profil pertama
     return view('components.footer', compact('profile'));
 }
 // public function inquiry()

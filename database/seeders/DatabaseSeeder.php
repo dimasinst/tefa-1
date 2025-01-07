@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\admins;
 use App\Models\User;
 use App\Models\categories;
+use App\Models\profile;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\admin;
@@ -21,8 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             admin::class,
             categorySeeder::class,
-            // ProfileSeeder::class,
-            ProvinceSeeder::class
+            ProfileSeeder::class,
+            ProvinceSeeder::class,
 
         ]);
     }

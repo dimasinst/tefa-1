@@ -14,7 +14,7 @@
         @yield('content') <!-- Tempat konten halaman akan ditampilkan -->
     </div>
 
-    @include('components.footer') <!-- Menginclude footer -->
+    @include('components.footer', ['profile' => $profile]) <!-- Menginclude footer -->
     <script src="{{ asset('js/app.js') }}"></script> <!-- Ganti dengan path JS Anda -->
 </body>
 </html>

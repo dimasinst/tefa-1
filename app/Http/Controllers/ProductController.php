@@ -37,28 +37,28 @@ class ProductController extends Controller
 
 public function cvt()
 {
-    $profile = profile::all();
+    $profile = profile::first();
     $products = products::where('category_id', 1)->paginate(5);
     return view('categories.cvt', compact('products','profile'));
 }
 
 public function valve()
 {
-    $profile = profile::all();
+    $profile = profile::first();
     $products = Products::where('category_id', 2)->paginate(5);
     return view('categories.valve', compact('products','profile'));
 }
 
 public function clutch()
 {
-    $profile = profile::all();
+    $profile = profile::first();
     $products = Products::where('category_id', 3)->paginate(5);
     return view('categories.clutch', compact('products', 'profile'));
 }
 
 public function sentri()
 {
-    $profile = profile::all();
+    $profile = profile::first();
     $products = Products::where('category_id', 4)->paginate(5);
     return view('categories.sentri', compact('products','profile'));
 
@@ -67,7 +67,7 @@ public function showProduct($id)
 {
     $products = Products::find($id);
     $productDetail = Products::findOrFail($id);
-    $profile = profile::all();
+    $profile = profile::first();
     $relatedProducts = Products::where('category_id', $productDetail->category_id)
                             ->where('id', '!=', $id)
                             ->get();
@@ -121,7 +121,7 @@ public function showProduct($id)
             'category_id'   => $request->category_id,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Product added successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product added successfully');
     }
 
     public function edit($id)
@@ -165,7 +165,7 @@ public function showProduct($id)
             'category_id' => $request->category_id,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Produk berhasil ditambahkan.');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
     public function update(Request $request, $id)
     {
@@ -218,7 +218,7 @@ public function showProduct($id)
             'Initial_Tension' => $request->category_id == 4 ? $request->Initial_Tension : null,
         ]);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product updated successfully');
     }
 
 
@@ -238,7 +238,7 @@ public function showProduct($id)
 
     public function show($id)
     {
-        $profile = profile::all();
+        $profile = profile::first();
         $products = Products::findOrFail($id);
         $relatedProducts = Products::where('category_id', $products->category_id)
         ->where('id', '!=', $id)

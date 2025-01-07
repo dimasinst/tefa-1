@@ -1,3 +1,4 @@
+
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Google Fonts -->
@@ -10,10 +11,9 @@
     <div class="footer">
         <!-- Social Media Icons Row -->
         <div class="icons">
-            <a href="{{ $profile->email }}"><i class="fa fa-envelope"></i></a>
-            <a href="{{ $profile->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="{{$profile->email}}"><i class="fa fa-envelope"></i></a>
+            <a href="{{$profile->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
-
         <!-- Footer Navigation Links Row -->
         <div class="row">
             <ul>
@@ -25,7 +25,6 @@
                 <li><a href="#">Other</a></li>
             </ul>
         </div>
-
         <!-- Footer Copyright Row -->
         <div class="row copyright">
             <p><a href="{{route('login')}}">&copy;</a> 2024 CVT Motor - All rights reserved</p>

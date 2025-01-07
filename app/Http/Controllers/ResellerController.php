@@ -12,9 +12,9 @@ class ResellerController extends Controller
     {
         // Ambil data provinsi unik dari tabel resellers
         $provinces = Reseller::select('province')->distinct()->get();
-    
+        $profile = Profile::first();
         // Kirim data provinsi ke view
-        return view('sales.contact', compact('provinces'));
+        return view('sales.contact', compact('provinces','profile'));
     }
     // Menyimpan data reseller
     public function store(Request $request)
@@ -44,7 +44,7 @@ class ResellerController extends Controller
     // Menampilkan daftar reseller di admin
     public function indexUser()
     {
-        $profile = profile::all();
+        $profile = profile::first();
         // Mengambil reseller yang hanya disetujui untuk user
         $resellers = Reseller::where('status', 'approved')->paginate(10);
         return view('reseller.index', compact('resellers','profile'));
@@ -119,21 +119,19 @@ class ResellerController extends Controller
     // Method untuk Update reseller oleh admin
     public function updateAdmin(Request $request, $id)
     {
-        $reseller = Reseller::findOrFail($id);
-
-        // Validasi input
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'status' => 'required|string',
-            'address' => 'required|string',
-            'phone_number' => 'required|string',
+            'phone' => 'required|string|max:15',
+            'province' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'instagram' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
         ]);
-
-        // Update data reseller
-        $reseller->update($request->all());
-
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.resellers.index')->with('success', 'Reseller updated successfully.');
+        
+        $reseller = Reseller::findOrFail($id);
+        $reseller->update($validated);
+    
+        return redirect()->route('admin.resellers.index')->with('success', 'Data berhasil diperbarui.');
     }
     public function destroyAdmin($id)
     {

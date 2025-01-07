@@ -22,15 +22,15 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($profiles as $profile)
+                @forelse($profile as $profiles)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $profile->email }}</td>
+                    <td>{{ $profiles    ->email }}</td>
                     <td>
-                        <a href="{{ $profile->instagram }}" target="_blank">{{ $profile->instagram }}</a>
+                        <a href="{{ $profiles->instagram }}" target="_blank">{{ $profiles->instagram }}</a>
                     </td>
                     <td>
-                        <a href="{{ route('admin.profile.edit', $profile->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('admin.profile.edit', $profiles->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     </td>
                 </tr>
                 @empty

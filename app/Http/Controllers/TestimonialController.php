@@ -21,7 +21,7 @@ class TestimonialController extends Controller
     public function userIndex()
     {
         // Retrieve all testimonials
-        $profile = profile::all();
+        $profile = profile::first();
         $testimoni = Testimonial::all();
         return view('other.index', compact('testimoni','profile'));
     }

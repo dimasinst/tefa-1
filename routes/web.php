@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -6,7 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\profileController;
 
 // Rute untuk login
 Route::middleware(['guest'])->group(function () {
@@ -36,9 +37,9 @@ Route::prefix('categories')->group(function () {
 });
 
 Route::prefix('profile')->group(function () {
-Route::get('/', [ProfileController::class, 'index'])->name('admin.profile.index');
-Route::get('/edit', [ProfileController::class, 'edit'])->name('admin.profile.edit');
-Route::post('/admin/edit', [ProfileController::class, 'update'])->name('admin.profile.update');
+Route::get('/', [profileController::class, 'index'])->name('admin.profile.index');
+Route::get('/edit', [profileController::class, 'edit'])->name('admin.profile.edit');
+Route::post('/admin/edit', [profileController::class, 'update'])->name('admin.profile.update');
 });
 
 // Rute untuk user (reseller)
@@ -58,7 +59,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::get('/', [ResellerController::class, 'indexAdmin'])->name('admin.resellers.index');
         Route::get('/{id}', [ResellerController::class, 'showAdmin'])->name('admin.resellers.show');
         Route::get('/{id}/edit', [ResellerController::class, 'editAdmin'])->name('admin.resellers.edit');
-        Route::put('/{id}', [ResellerController::class, 'updateAdmin'])->name('admin.resellers.update');
+        Route::put('/admin/resellers/{id}', [ResellerController::class, 'updateAdmin'])->name('admin.resellers.update');
         Route::delete('/{id}', [ResellerController::class, 'destroyAdmin'])->name('admin.resellers.delete');
         Route::post('/{reseller}/approve', [ResellerController::class, 'approve'])->name('admin.resellers.approve');
         Route::post('/{reseller}/reject', [ResellerController::class, 'reject'])->name('admin.resellers.reject');
