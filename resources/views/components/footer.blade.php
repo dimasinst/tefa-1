@@ -27,13 +27,23 @@
         </div>
         <!-- Footer Copyright Row -->
         <div class="row copyright">
-            <p><a href="{{route('login')}}">&copy;</a> 2024 CVT Motor - All rights reserved</p>
+            <p><a href="{{route('admin.dashboard')}}">&copy;</a> 2024 CVT Motor - All rights reserved</p>
             <p>Powered by: <a href="https://www.yourcompany.com" target="_blank">Developer</a></p>
         </div>
     </div>
 </footer>
 
 <style>
+    a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#fff; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
     body {
         margin: 0;
         overflow-x: hidden;

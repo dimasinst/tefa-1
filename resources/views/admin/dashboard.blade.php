@@ -4,7 +4,7 @@
 <div class="container">
     <!-- Header -->
     <div class="text-center">
-        <h1 class="display-4 text-primary font-weight-bold" style="font-family: 'Poppins', sans-serif;">Admin Dashboard</h1>
+        <h1 class="py-5 display-4 text-primary font-weight-bold" style="font-family: 'Poppins', sans-serif;">Admin Dashboard</h1>
         <p class="lead text-muted">Selamat datang, Admin! Pilih tindakan yang ingin Anda lakukan:</p>
     </div>
 
@@ -41,10 +41,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Card Testimoni -->
-    <div class="col mt-4">
+        <div class="col mt-4">
         <div class="card custom-card shadow rounded-4">
             <div class="card-body text-center">
                 <i class="fas fa-comments fa-4x text-info mb-3"></i>
@@ -53,7 +50,6 @@
             </div>
         </div>
     </div>
-
     <div class="col mt-4">
         <div class="card custom-card shadow rounded-4">
             <div class="card-body text-center">
@@ -63,6 +59,12 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- Card Testimoni -->
+   
+
+  
 
 
 </div>

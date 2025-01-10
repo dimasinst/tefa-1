@@ -20,14 +20,14 @@ class ProvinceSeeder extends Seeder
         ];
 
         foreach ($provinces as $province) {
-            DB::table('resellers')->insert([
-                'province' => $province,
-                'name' => '-',  // Placeholder untuk nama reseller
-                'city' => '-',  // Placeholder untuk kota
-                'phone' => null,
-                'instagram' => '-',  // Placeholder untuk Instagram
-                'alamat' => '-',  // Placeholder untuk alamat
-                'status' => 'pending',
+            DB::table('province')->insert([
+                    'province' => $province,
+                    // 'name' => '-',  // Placeholder untuk nama reseller
+                    // 'city' => '-',  // Placeholder untuk kota
+                    // 'phone' => null,
+                    // 'instagram' => '-',  // Placeholder untuk Instagram
+                    // 'alamat' => '-',  // Placeholder untuk alamat
+                    // 'status' => 'pending',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -4,9 +4,25 @@
 <head>
     @include('components.head')
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
+           .select2-container .select2-selection--single {
+            height: 40px;
+            padding: 6px 12px;
+            font-size: 1rem;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .select2-container--default .select2-selection--single:focus {
+            border-color: #ff7e5f;
+            box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+        }
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
@@ -184,20 +200,20 @@
     <!-- Inquiry Section -->
     <section class="inquiry-section" id="inquiry">
         <div class="container">
-            <div class="section-title">
-                <h2>Gabung Menjadi Reseller Kami</h2>
+            <div class="section-title mt-4">
+                <h2>Ayo jadi Rekanan Kami</h2>
                 <p>Ajukan sekarang dan dapatkan peluang bisnis menarik dengan kami!</p>
             </div>
 
             <div class="contact-info" data-aos="fade-up">
                 <div class="contact-item">
-                    <a href="https://www.instagram.com/mtnspring_japan.official/" target="_blank" class="text-decoration-none text-white">
+                    <a href="{{$profile->instagram}}" target="_blank" class="text-decoration-none text-white">
                         <i class="bi bi-instagram"></i>
                         <p>Instagram</p>
                     </a>
                 </div>
                 <div class="contact-item">
-                    <a href="mailto:support@mtnspring.com" class="text-decoration-none text-white">
+                    <a href="{{$profile->email}}" class="text-decoration-none text-white">
                         <i class="bi bi-envelope"></i>
                         <p>Email</p>
                     </a>
@@ -208,7 +224,7 @@
 
     <!-- Reseller Form Section -->
     <div class="form-wrapper" data-aos="zoom-in">
-        <h3>Formulir Pendaftaran Reseller</h3>
+        <h3>Formulir untuk menjadi bagian dari rekanan kami</h3>
         <form action="{{ route('resellers.store') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -223,7 +239,7 @@
 
             <div class="form-group">
                 <label for="province" class="form-label">Provinsi</label>
-                <select id="province" name="province" class="form-control" required>
+                <select id="province" name="province" class="form-control select2" required>
                     <option value="" disabled selected>Pilih Provinsi</option>
                     @foreach($provinces as $province)
                         <option value="{{ $province->province }}">{{ $province->province }}</option>
@@ -253,8 +269,18 @@
     @include('components.footer', ['profile' => $profile])
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        AOS.init({ once: true });
+        // Inisialisasi Select2
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "Pilih Provinsi",
+                allowClear: true
+            });
+
+            AOS.init({ once: true });
+        });
     </script>
 </body>
 

@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="d-flex justify-content-between mb-4">
             <a href="{{ route('admin.dashboard') }}" class="btn btn-dark btn-lg">
-                <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+                <i class="bi bi-arrow-left-circle"></i> Kembali
             </a>
             
             <!-- Icon Notifikasi -->

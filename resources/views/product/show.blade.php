@@ -59,19 +59,24 @@
         }
 
         .btn-back {
-            background: linear-gradient(135deg, #ff5e5e, #ff9f1c);
-            color: white;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #f39c12, #e67e22); /* Kalem gradasi oranye */
             border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn-back:hover {
-            background: linear-gradient(135deg, #ff9f1c, #ff5e5e);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #f1c40f, #e74c3c); /* Hover dengan gradasi cerah */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
+
 
         /* Styling untuk produk terkait */
         .related-product {

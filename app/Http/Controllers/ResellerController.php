@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reseller;
+use App\Models\province;
 use App\Models\profile;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class ResellerController extends Controller
     public function showContactForm()
     {
         // Ambil data provinsi unik dari tabel resellers
-        $provinces = Reseller::select('province')->distinct()->get();
+        $provinces = province::select('province')->distinct()->get();
         $profile = Profile::first();
         // Kirim data provinsi ke view
         return view('sales.contact', compact('provinces','profile'));
@@ -63,7 +64,7 @@ class ResellerController extends Controller
     // Untuk User melihat detail reseller
     public function showUser($id)
     {
-        $profile = profile::all();
+        $profile = profile::first();
         $reseller = Reseller::findOrFail($id);
 
         // Pastikan reseller ini disetujui untuk user

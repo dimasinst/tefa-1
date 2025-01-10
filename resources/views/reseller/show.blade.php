@@ -105,22 +105,24 @@
 
     /* Button Styling */
     .btn {
-        background: linear-gradient(135deg, #ff5e5e, #ff9f1c);
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        padding: 10px 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #f39c12, #e67e22); /* Kalem gradasi oranye */
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .btn:hover {
-        background: linear-gradient(135deg, #ff9f1c, #ff5e5e);
+        .btn:hover {
+            background: linear-gradient(45deg, #f1c40f, #e74c3c); /* Hover dengan gradasi cerah */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
 
-        transform: translateY(-2px);
-    }
 
     /* Responsiveness */
     @media (max-width: 768px) {

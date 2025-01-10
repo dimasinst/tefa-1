@@ -105,7 +105,7 @@
     <h2 class="section-header">Edit Produk</h2>
     <div class="d-flex justify-content-start mb-4">
         <a href="{{ route('admin.products.index') }}" class="btn btn-dark btn-lg">
-            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+            <i class="bi bi-arrow-left-circle"></i> Kembali
         </a>
     </div>
 

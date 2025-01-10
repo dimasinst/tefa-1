@@ -13,19 +13,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">Home</a>
+                    <a class="nav-link {{ Request::routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('sales.contact') }}">Inquery</a>
+                    <a class="nav-link {{ Request::routeIs('sales.contact') ? 'active' : '' }}" href="{{ route('sales.contact') }}">Inquery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.cvt') }}">Products</a>
+                    <a class="nav-link {{ Request::routeIs('categories.cvt') ? 'active' : '' }}" href="{{ route('categories.cvt') }}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('reseller.index') }}">Partners</a>
+                    <a class="nav-link {{ Request::routeIs('reseller.index') ? 'active' : '' }}" href="{{ route('reseller.index') }}">Partners</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('other.index') }}">Article</a>
+                    <a class="nav-link {{ Request::routeIs('other.index') ? 'active' : '' }}" href="{{ route('other.index') }}">Article</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
 </nav>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @if ($message = Session::get('success'))
@@ -45,29 +45,28 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
 <style>
     /* Menggunakan font Poppins untuk navbar */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
-.navbar-nav{
-    margin: 0 auto; /* Menempatkan navbar di tengah */
-    display: flex;
-    justify-content: end; /* Untuk memastikan link berada di tengah */
-    width: 100%;
-}
-.nav-link {
-    position: relative;
-    color: #fff; /* Warna teks navbar default (putih) */
-    font-size: 0.9rem; /* Ukuran font */
-    font-weight: 500; /* Ketebalan font */
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-}
+
+    .navbar-nav {
+        margin: 0 auto; /* Menempatkan navbar di tengah */
+        display: flex;
+        justify-content: end; /* Untuk memastikan link berada di tengah */
+        width: 100%;
+    }
+
+    .nav-link {
+        position: relative;
+        color: #fff; /* Warna teks navbar default (putih) */
+        font-size: 0.9rem; /* Ukuran font */
+        font-weight: 500; /* Ketebalan font */
+        transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    }
 
     .navbar-nav .nav-link {
-        color: white; /* Warna teks default navbar */
         transition: color 0.3s ease;
         font-family: sans-serif; /* Menggunakan font Poppins */
     }
 
-    .navbar-nav .nav-link:hover {
-        color: #ffcc00; /* Warna kuning saat hover */
-    }
+    
 
     .navbar-brand {
         font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins untuk brand */
@@ -83,14 +82,16 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
         background-color: #ff6600; /* Ubah warna icon toggler */
     }
 
-.nav-link:hover {
-    color: #FFD700; /* Warna kuning saat hover (berikan efek menonjol) */
-    background-color: #ff5733; /* Warna latar belakang saat hover, bisa disesuaikan dengan aksen oranye */
-    border-radius: 10px; /* Efek border-radius saat hover */
-    transform: scale(1.05); /* Efek zoom saat hover */
-}
+    .nav-link:hover {
+        color: #FFD700; /* Warna kuning saat hover (berikan efek menonjol) */
+        background-color: #ff5733; /* Warna latar belakang saat hover, bisa disesuaikan dengan aksen oranye */
+        border-radius: 10px; /* Efek border-radius saat hover */
+        transform: scale(1.05); /* Efek zoom saat hover */
+    }
 
-/* Navbar aktif */
-
-
+    .nav-link.active {
+        background-color: #ff5733; /* Warna latar belakang saat aktif */
+        border-radius: 10px; /* Efek border-radius */
+        font-weight: bold; /* Menebalkan teks */
+    }
 </style>

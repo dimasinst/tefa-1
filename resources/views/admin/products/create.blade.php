@@ -63,7 +63,7 @@
     <div class="container">
         <h2>Tambah Produk Baru</h2>
         <a href="{{ route('admin.products.index') }}" class="btn btn-dark btn-lg mb-3">
-            <i class="bi bi-arrow-left-circle"></i> Kembali ke Dashboard
+            <i class="bi bi-arrow-left-circle"></i> Kembali
         </a>
 
         {{-- Alert Section --}}

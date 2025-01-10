@@ -8,7 +8,7 @@
         <h2 class="text-center fw-bold mb-4" style="color: #333;">Cara Menggunakan Barcode</h2>
         <div class="row justify-content-center">
             <div class="col-md-8 text-center video-container">
-                <video controls class="w-100 rounded shadow-lg">
+                <video controls class="rounded shadow-lg" style="max-width: 300px; width: 100%; height: auto;">
                     <source src="{{ asset('videos/barcode.mp4') }}" type="video/mp4">
                 </video>
             </div>
@@ -44,7 +44,6 @@
 
 </div>
 
-
 <!-- CSS -->
 <style>
     /* Latar belakang utama */
@@ -64,10 +63,10 @@
     }
 
     /* Video container */
-    .video-container {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    .video-container video {
+        max-width: 600px; /* Lebar maksimal video */
+        width: 100%; /* Responsif terhadap ukuran layar */
+        height: auto; /* Menjaga proporsi video */
     }
 
     /* Hover efek glowing untuk video */
