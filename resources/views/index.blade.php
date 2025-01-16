@@ -199,55 +199,7 @@
             color: #ff6347;
             font-size: 1.5rem;
         }
-        /* Video Section */
-.video-section {
-    background: #f9f9f9;
-    padding: 50px 0;
-    text-align: center;
-}
 
-.video-section h4 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ff6347;
-    padding-bottom: 10px;
-}
-
-.video-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.video-item {
-    background: #fff;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    max-width: 560px;
-    width: 100%;
-    transition: transform 0.3s ease-in-out;
-}
-
-.video-item:hover {
-    transform: translateY(-10px);
-}
-
-.video-description {
-    margin-bottom: 15px;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-.video-frame iframe {
-    width: 100%;
-    height: 315px;
-    border-radius: 8px;
-}
         /* Responsiveness */
         @media (max-width: 768px) {
             .about-section {
@@ -268,9 +220,7 @@
         align-items: center;
     }
 
-    .video-item {
-        width: 90%;
-    }
+   
     .jumbotron .btn-container h2 {
                 font-size: 1rem;
             }
@@ -334,38 +284,7 @@
         </div>
     </section>
     <!-- Video Section -->
-<section id="videos" class="video-section" data-aos="fade-up" data-aos-duration="1200">
-    <h4>Video Kami</h4>
-    <div class="video-container">
-        <!-- Video 1 -->
-        <div class="video-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-            <div class="video-description">
-                <p>Video 1: Penjelasan mengenai produk pertama kami, Valve Spring (Per Klep), dan cara kerjanya dalam aplikasi balapan.</p>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_URL_1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <!-- Video 2 -->
-        <div class="video-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-            <div class="video-description">
-                <p>Video 2: Menampilkan testimoni dari pengguna kami yang menggunakan produk Clutch Spring (Per Kopling) dalam motor balap mereka.</p>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_URL_2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <!-- Video 3 -->
-        <div class="video-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-            <div class="video-description">
-                <p>Video 3: Demonstrasi penggunaan produk Primary Spring (CVT Spring) dalam motor yang digunakan di ajang balap.</p>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_URL_3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 
 @includeWhen($profile, 'components.footer', ['profile' => $profile])
