@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5 pt-5" style="background: #ffffff; padding: 50px; border-radius: 20px; box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.1);">
+<div class="container mt-5 pt-5" style="background: #ffffff; padding: 20px; border-radius: 20px; box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.1);">
 
     <!-- Section: Cara Menggunakan Barcode -->
-    <section class="mb-5" data-aos="fade-up" data-aos-duration="800">
+    <section data-aos="fade-up" data-aos-duration="800" style="margin-bottom: 20px;">
         <h2 class="text-center fw-bold mb-4" style="color: #333;">Cara Menggunakan Barcode</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8 text-center video-container">
-                <video controls class="rounded shadow-lg" style="max-width: 300px; width: 100%; height: auto;">
+        <div class="">
+            <div class=" text-center video-container">
+                <video controls class="rounded shadow-lg" style="width: 25%; width: 25%; height: 60%;">
                     <source src="{{ asset('videos/tutor.mp4') }}" type="video/mp4">
                 </video>
             </div>
@@ -16,14 +16,14 @@
     </section>
 
     <!-- Section: Testimoni Pelanggan -->
-    <section class="mt-5" data-aos="fade-up" data-aos-duration="800">
+    <section data-aos="fade-up" data-aos-duration="800" style="margin-top: 0;">
         <h2 class="text-center fw-bold mb-4" style="color: #333;">Testimoni Pelanggan</h2>
         <div id="carouselTestimoni" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($testimoni as $key => $testimonial)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <div class="card shadow-lg border-0 rounded text-center glowing-card">
-                        <img src="{{ asset('storage/' . $testimonial->image) }}" class="card-img-top rounded mx-auto" alt="Testimoni {{ $key + 1 }}" style="width: 70%;">
+                        <img src="{{ asset('storage/' . $testimonial->image) }}" class="card-img-top rounded mx-auto" alt="Testimoni {{ $key + 1 }}" style="width: 80%; max-width: 300px;">
                         <div class="card-body">
                             <p class="card-text">{{ $testimonial->message }}</p>
                         </div>
@@ -46,37 +46,24 @@
 
 <!-- CSS -->
 <style>
-    /* Latar belakang utama */
     body {
-        background: #ececec; /* Lebih gelap dibanding sebelumnya */
+        background: #ececec;
         font-family: 'Poppins', sans-serif;
         color: #444;
     }
 
-    /* Section styling */
     section {
         background: #ffffff;
-        padding: 30px 40px;
+        padding: 20px;
         border-radius: 15px;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
-    /* Video container */
-    .video-container video {
-        max-width: 600px; /* Lebar maksimal video */
-        width: 100%; /* Responsif terhadap ukuran layar */
-        height: auto; /* Menjaga proporsi video */
+    section:last-of-type {
+        margin-bottom: 0;
     }
 
-    /* Hover efek glowing untuk video */
-    .video-container:hover video {
-        transform: scale(1.03);
-        box-shadow: 0px 10px 30px rgba(255, 145, 77, 0.5);
-        transition: all 0.4s ease;
-    }
-
-    /* Kartu testimonial */
     .glowing-card {
         transition: all 0.3s ease-in-out;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -87,26 +74,42 @@
         box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
     }
 
-    /* Carousel control styling */
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-        background-color: #000; /* Tombol hitam */
+        background-color: #000;
         border-radius: 50%;
         width: 40px;
         height: 40px;
     }
 
-    /* Typography */
     h2 {
         font-family: 'Poppins', sans-serif;
-        font-size: 2.2rem;
+        font-size: 1.8rem;
         color: #333;
         margin-bottom: 20px;
     }
 
     .card-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 15px;
+        }
+
+        section {
+            padding: 15px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            font-size: 0.8rem;
+        }
     }
 </style>
 
