@@ -16,7 +16,7 @@
                     <a class="nav-link {{ Request::routeIs('index') ? 'active' : '' }}" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::routeIs('sales.contact') ? 'active' : '' }}" href="{{ route('sales.contact') }}">Inquery</a>
+                    <a class="nav-link {{ Request::routeIs('sales.contact') ? 'active' : '' }}" href="{{ route('sales.contact') }}">Inquiry</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::routeIs('categories.cvt') ? 'active' : '' }}" href="{{ route('categories.valve') }}">Products</a>

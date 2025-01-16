@@ -19,10 +19,10 @@
             <ul>
                 <li><a href="{{route('home')}}">Home</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="{{route('sales.contact')}}">Inquery</a></li>
-                <li><a href="{{route('categories.cvt')}}">Produk</a></li>
-                <li><a href="{{route('reseller.index')}}">Rekanan</a></li>
-                <li><a href="#">Other</a></li>
+                <li><a href="{{route('sales.contact')}}">Inquiry</a></li>
+                <li><a href="{{route('categories.cvt')}}">Product</a></li>
+                <li><a href="{{route('reseller.index')}}">Partners</a></li>
+                <li><a href="{{route('other.index')}}">Other</a></li>
             </ul>
         </div>
         <!-- Footer Copyright Row -->
