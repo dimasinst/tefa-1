@@ -8,7 +8,7 @@
         <h2 class="text-center fw-bold mb-4" style="color: #333;">Cara Menggunakan Barcode</h2>
         <div class="">
             <div class=" text-center video-container">
-                <video controls class="rounded shadow-lg" style="width: 25%; width: 25%; height: 60%;">
+                <video controls  class="rounded shadow-lg" >
                     <source src="{{ asset('videos/tutor.mp4') }}" type="video/mp4">
                 </video>
             </div>
@@ -50,6 +50,12 @@
         background: #ececec;
         font-family: 'Poppins', sans-serif;
         color: #444;
+    }
+
+    .video-container video {
+        max-width: 30%;
+        width: 30%;
+        height: 50%;
     }
 
     section {
@@ -110,6 +116,11 @@
         .card-text {
             font-size: 0.8rem;
         }
+        .video-container video {
+        max-width: 50%;
+        width: 50%;
+        height: 70%;
+    }
     }
 </style>
 
