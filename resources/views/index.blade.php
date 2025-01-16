@@ -232,29 +232,25 @@
         }
     </style>
 </head>
-
 <body>
     @include('components.navbar')
 
-
-    <!-- Jumbotron Section with Image -->
+    <!-- Jumbotron Section -->
     <section class="jumbotron text-center mt-5 pt-3" id="home" data-aos="fade-up" data-aos-duration="1000">
         <div>
             <img src="{{ asset('image/home.png') }}" alt="Jumbotron Image" class="img-fluid" data-aos="zoom-in" data-aos-delay="200">
         </div>
         <!-- Tombol untuk mengarah ke Inquery -->
         <div class="btn-container">
-    <h2>Temukan Produk Unggulan Kami!</h2>
-    <a href="{{route('categories.valve')}}" class="btn btn-lg" data-aos="fade-up" data-aos-duration="1000">
-        Lihat Produk Sekarang
-    </a>
-</div>
-
+            <h2>Temukan Produk Unggulan Kami!</h2>
+            <a href="{{route('categories.valve')}}" class="btn btn-lg" data-aos="fade-up" data-aos-duration="1000">
+                Lihat Produk Sekarang
+            </a>
+        </div>
     </section>
 
-    <!-- About Us Section with Animation -->
+    <!-- About Us Section -->
     <section id="about" class="about-section" data-aos="fade-up" data-aos-duration="1200">
-        <!-- Image Side -->
         <div class="about-image" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="300">
             <img src="{{ asset('image/about.jpeg') }}" alt="Company Image">
         </div>
@@ -262,42 +258,55 @@
         <div class="about-content" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
             <h3>Tentang Kami</h3>
             <p>
-                <b>MTN Spring</b> adalah perusahaan lokal yang fokus pada pengembangan dan inovasi komponen spring untuk balapan.
-                Kami menggunakan material terbaik yang diimpor dari Jepang, sehingga produk kami menawarkan performa maksimal dengan durabilitas tinggi.
+                <b>MTN Spring</b> Japan adalah brand Sparepart yang menyediakan suku cadang Spring (Per). MTN Spring menyediakan Sparepart untuk kebutuhan daily (harian) dan race (balap).
             </p>
             <p>
-                Kami berkomitmen untuk memenuhi kebutuhan pasar akan produk-produk berkualitas yang dihasilkan melalui penelitian dan pengujian intensif.
+                MTN Spring di desain khusus untuk mendapatkan performance terbaik pada kendaraan otomotif anda. MTN Spring diproduksi menggunakan material Jepang dan diproduksi di pabrikan Jepang di Indonesia.
             </p>
             <ul class="product-list" data-aos="fade-up" data-aos-delay="700">
-    <h4>Produk Kami</h4>
-    <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="100"><b class="fas fa-car-battery">Valve Spring (Per Klep)</b></li>
+                <h4>Produk Kami</h4>
+                <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="100"><b class="fas fa-car-battery">Valve Spring (Per Klep)</b></li>
+                <hr>
+                <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="100"><b class="fas fa-car-battery">Clutch Spring (Per Kopling)</b></li>
+                <hr>
+                <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"><b class="fas fa-tools">Primary Spring (CVT Spring)</b></li>
+                <hr>
+                <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"><b class="fas fa-tools">Secondary Spring (Per Sentri)</b></li>
+            </ul>
+            <p>MTN Spring menyediakan beberapa kriteria untuk jenis per nya: Soft, Medium, dan Hard (Kompetisi). Temukan produk sesuai dengan kebutuhan anda hanya di MTN Spring Japan. MTN Spring juga melayani sharing/konsultasi terkait dengan Spring kebutuhan anda.</p>
 
-    <hr>
-    <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="100"><b class="fas fa-car-battery"> Clutch Spring (Per Kopling)</b></li>
-    <hr>
-    <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"><b class="fas fa-tools">Primary Spring (CVT Spring)</b> </li>
-    <hr>
-    <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"><b class="fas fa-tools">Secondary Spring (Per Sentri)</b> </li>
-
-</ul>
-
+            <!-- Salam Section -->
+            <p class="salam">salam: banter tapi safety</p>
         </div>
     </section>
-    <!-- Video Section -->
 
-
-
-@includeWhen($profile, 'components.footer', ['profile' => $profile])
-
-
-
+    @includeWhen($profile, 'components.footer', ['profile' => $profile])
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: false,  // Membiarkan animasi berjalan terus
-            mirror: true   // Agar animasi dipicu lagi ketika elemen muncul kembali
+            once: false,
+            mirror: true
         });
     </script>
+
+    <style>
+        .salam {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #555;
+            margin-top: 20px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        /* Responsiveness untuk Salam text */
+        @media (max-width: 768px) {
+            .salam {
+                font-size: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
 </body>
 </html>
