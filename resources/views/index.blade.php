@@ -258,7 +258,7 @@
         <div class="about-content" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
             <h3>Tentang Kami</h3>
             <p>
-                <b>MTN Spring</b> Japan adalah brand Sparepart yang menyediakan suku cadang Spring (Per). MTN Spring menyediakan Sparepart untuk kebutuhan daily (harian) dan race (balap).
+                <b>MTN Spring</b> Japan adalah brand sparepart yang menyediakan suku cadang spring (Per). MTN Spring menyediakan sparepart untuk kebutuhan daily (harian) dan race (balap).
             </p>
             <p>
                 MTN Spring di desain khusus untuk mendapatkan performance terbaik pada kendaraan otomotif anda. MTN Spring diproduksi menggunakan material Jepang dan diproduksi di pabrikan Jepang di Indonesia.
@@ -273,10 +273,10 @@
                 <hr>
                 <li data-aos="fade-up" data-aos-duration="600" data-aos-delay="200"><b class="fas fa-tools">Secondary Spring (Per Sentri)</b></li>
             </ul>
-            <p>MTN Spring menyediakan beberapa kriteria untuk jenis per nya: Soft, Medium, dan Hard (Kompetisi). Temukan produk sesuai dengan kebutuhan anda hanya di MTN Spring Japan. MTN Spring juga melayani sharing/konsultasi terkait dengan Spring kebutuhan anda.</p>
+            <p>MTN Spring menyediakan beberapa kriteria untuk jenis per nya: soft, medium, dan hard (Kompetisi). Temukan produk sesuai dengan kebutuhan anda hanya di MTN spring Japan. MTN Spring juga melayani sharing/konsultasi terkait dengan kebutuhan spring anda.</p>
 
             <!-- Salam Section -->
-            <p class="salam">salam: banter tapi safety</p>
+            <p class="salam fs-2">"BANTER TAPI SAFETY"</p>
         </div>
     </section>
 
