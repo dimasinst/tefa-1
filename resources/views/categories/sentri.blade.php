@@ -137,7 +137,7 @@
             <span class="search-icon">&#128269;</span> <!-- Ikon pencarian -->
         </div>
 
-        <img src="{{ asset('image/foto1.jpeg') }}" alt="SENTRI" class="img">
+        <img src="{{ asset('image/sentri.JPG') }}" alt="SENTRI" class="img">
         <h2 class="text-center my-4">Produk SENTRI</h2>
 
         <div class="row row-cols-1 row-cols-md-3 g-4" id="product-list">

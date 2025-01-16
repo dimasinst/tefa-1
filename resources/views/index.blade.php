@@ -4,7 +4,8 @@
     @include('components.head')
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    <title>MTN.SPRING</title>
+    
     <style>
         body {
             background-color: #f3f4f7;

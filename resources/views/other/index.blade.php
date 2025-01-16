@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 text-center video-container">
                 <video controls class="rounded shadow-lg" style="max-width: 300px; width: 100%; height: auto;">
-                    <source src="{{ asset('videos/barcode.mp4') }}" type="video/mp4">
+                    <source src="{{ asset('videos/tutor.mp4') }}" type="video/mp4">
                 </video>
             </div>
         </div>

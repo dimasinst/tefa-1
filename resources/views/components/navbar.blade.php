@@ -19,7 +19,7 @@
                     <a class="nav-link {{ Request::routeIs('sales.contact') ? 'active' : '' }}" href="{{ route('sales.contact') }}">Inquery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::routeIs('categories.cvt') ? 'active' : '' }}" href="{{ route('categories.cvt') }}">Products</a>
+                    <a class="nav-link {{ Request::routeIs('categories.cvt') ? 'active' : '' }}" href="{{ route('categories.valve') }}">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::routeIs('reseller.index') ? 'active' : '' }}" href="{{ route('reseller.index') }}">Partners</a>
