@@ -208,16 +208,20 @@
 
             <div class="contact-info" data-aos="fade-up">
                 <div class="contact-item">
-                    <a href="{{$profile->instagram}}" target="_blank" class="text-decoration-none text-white">
+                    <a href="https://www.instagram.com/mtnspring_japan.official/" target="_blank" class="text-decoration-none text-white">
                         <i class="bi bi-instagram"></i>
                         <p>Instagram</p>
                     </a>
+                    
                 </div>
                 <div class="contact-item">
-                    <a href="{{$profile->email}}" class="text-decoration-none text-white">
-                        <i class="bi bi-envelope"></i>
-                        <p>Email</p>
-                    </a>
+                    <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=luki.mtnspg@gmail.com" 
+                        target="_blank" 
+                        class="text-decoration-none text-white">
+                         <i class="bi bi-envelope"></i>
+                         <p>Email</p>
+                     </a>
+                     
                 </div>
             </div>
         </div>

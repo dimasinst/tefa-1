@@ -11,7 +11,7 @@
     <div class="footer">
         <!-- Social Media Icons Row -->
         <div class="icons">
-            <a href="{{$profile->email}}"><i class="fa fa-envelope"></i></a>
+            <a href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=luki.mtnspg@gmail.com"><i class="fa fa-envelope"></i></a>
             <a href="{{$profile->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
         <!-- Footer Navigation Links Row -->
