@@ -3,46 +3,47 @@
 @section('content')
 <div class="container mt-5 pt-5">
     <div class="card shadow-sm border-0 p-4 mx-auto reseller-card">
-        <!-- Tabel untuk detail reseller -->
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th class="text-center">Detail Reseller</th>
-                    <th class="text-center">Informasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Menambahkan row untuk nama reseller -->
-                <tr>
-                    <td><strong>Nama Reseller</strong></td>
-                    <td><strong>{{ $reseller->name }}</strong></td>
-                </tr>
-                <tr>
-                    <td>Provinsi</td>
-                    <td>{{ $reseller->province }}</td>
-                </tr>
-                <tr>
-                    <td>Kota</td>
-                    <td>{{ $reseller->city }}</td>
-                </tr>
-                <tr>
-                    <td>Alamat</td>
-                    <td>{{ $reseller->alamat }}</td>
-                </tr>
-                <tr>
-                    <td>Telepon</td>
-                    <td>
-                        <a href="https://wa.me/{{ $reseller->phone }}" target="_blank" class="detail-link">{{ $reseller->phone }}</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Instagram</td>
-                    <td>
-                        <a href="https://www.instagram.com/{{ $reseller->instagram }}" target="_blank" class="detail-link">{{ $reseller->instagram }}</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Membuat tabel menjadi responsif di layar kecil -->
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">Detail Reseller</th>
+                        <th class="text-center">Informasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nama Reseller</strong></td>
+                        <td><strong>{{ $reseller->name }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Provinsi</td>
+                        <td>{{ $reseller->province }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kota</td>
+                        <td>{{ $reseller->city }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td class="word-wrap">{{ $reseller->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telepon</td>
+                        <td>
+                            <a href="https://wa.me/{{ $reseller->phone }}" target="_blank" class="detail-link">{{ $reseller->phone }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instagram</td>
+                        <td>
+                            <a href="https://www.instagram.com/{{ $reseller->instagram }}" target="_blank" class="detail-link">{{ $reseller->instagram }}</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="text-center mt-4">
             <a href="{{ route('reseller.index') }}" class="btn btn">Kembali</a>
         </div>
@@ -58,14 +59,6 @@
         background-color: #fafafa;
     }
 
-    /* Title Styling */
-    .reseller-title {
-        font-size: 1.75rem;
-        font-weight: 600;
-        color: #333;
-        letter-spacing: 1px;
-    }
-
     /* Card Styling */
     .reseller-card {
         max-width: 800px;
@@ -77,9 +70,9 @@
     /* Table Styling */
     .table th, .table td {
         text-align: left;
-        padding: 12px;  /* Menambah padding untuk lebih jelas */
-        font-weight: bold; /* Membuat teks menjadi tebal */
-        font-size: 1.1rem; /* Ukuran font lebih besar */
+        padding: 12px;
+        font-weight: bold;
+        font-size: 1.1rem;
     }
 
     .table th {
@@ -89,6 +82,13 @@
 
     .table td {
         color: #555;
+    }
+
+    /* Membuat alamat bisa terbungkus jika terlalu panjang */
+    .word-wrap {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 200px;
     }
 
     /* Link Styling */
@@ -105,37 +105,39 @@
 
     /* Button Styling */
     .btn {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            background: linear-gradient(45deg, #f39c12, #e67e22); /* Kalem gradasi oranye */
-            border: none;
-            color: #fff;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #f39c12, #e67e22);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .btn:hover {
-            background: linear-gradient(45deg, #f1c40f, #e74c3c); /* Hover dengan gradasi cerah */
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
+    .btn:hover {
+        background: linear-gradient(45deg, #f1c40f, #e74c3c);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
 
     /* Responsiveness */
     @media (max-width: 768px) {
-        .reseller-title {
-            font-size: 1.5rem;
-        }
-
         .reseller-card {
             padding: 16px;
         }
 
         .table th, .table td {
-            font-size: 1rem; /* Ukuran font sedikit lebih kecil di mobile */
+            font-size: 1rem;
+            padding: 8px;
+        }
+
+        /* Mengurangi ukuran teks di layar kecil */
+        .word-wrap {
+            max-width: 150px;
+            font-size: 0.9rem;
         }
 
         .btn {
