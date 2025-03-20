@@ -238,7 +238,7 @@
     <!-- Jumbotron Section -->
     <section class="jumbotron text-center mt-5 pt-3" id="home" data-aos="fade-up" data-aos-duration="1000">
         <div>
-            <img src="{{ asset('image/home.png') }}" alt="Jumbotron Image" class="img-fluid" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ asset('image/banner.jpg') }}" alt="Jumbotron Image" class="img-fluid" data-aos="zoom-in" data-aos-delay="200">
         </div>
         <!-- Tombol untuk mengarah ke Inquery -->
         <div class="btn-container">
@@ -258,7 +258,7 @@
         <div class="about-content" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="500">
             <h3>Tentang Kami</h3>
             <p>
-                <b>MTN Spring</b> Japan adalah brand sparepart yang menyediakan suku cadang spring (Per). MTN Spring menyediakan sparepart untuk kebutuhan daily (harian) dan race (balap).
+                <b>MTN Spring</b> Kami hadir untuk memberikan solusi terkait kebutuhan sparepart spring secara spesifik untuk memenuhi kebutuhan spring untuk kendaraan roda dua dan roda empat. Untuk saat ini kami menyediakan kebutuhan spring untuk Racing (kompetisi) dan kebutuhan harian (daily).
             </p>
             <p>
                 MTN Spring di desain khusus untuk mendapatkan performance terbaik pada kendaraan otomotif anda. MTN Spring diproduksi menggunakan material Jepang dan diproduksi di pabrikan Jepang di Indonesia.
